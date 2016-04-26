@@ -142,14 +142,14 @@ for node:SushiPiece in sushiTower {
   node.runAction(SKAction.moveBy(CGVector(dx: 0, dy: -55), duration: 0.10))
 >
   /* Reduce zPosition to stop zPosition climbing over UI */
-  node.zPosition--
+  node.zPosition -= 1
 }
 ```
 >
 
 Run the game... Should look a lot better now.
 
-Your applying a *moveBy* action to move every piece of sushi in the sushi tower down by `55` pixels. You're also decreasing the *Z-Position* of each piece.  If you recall every time a new piece is added the *Z-Position* is incremented, the problem here is as the position climbs it will eventually become higher than other visual elements such as our UI.  This way you keep the *Z-Position* of all the pieces in a manageable range.
+You're applying a *moveBy* action to move every piece of sushi in the sushi tower down by `55` pixels. You're also decreasing the *Z-Position* of each piece.  If you recall every time a new piece is added the *Z-Position* is incremented, the problem here is as the position climbs it will eventually become higher than other visual elements such as the UI.  This way you keep the *Z-Position* of all the pieces in a manageable range.
 
 #Animating the sushi
 

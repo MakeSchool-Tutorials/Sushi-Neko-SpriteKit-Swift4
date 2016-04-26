@@ -83,7 +83,7 @@ playButton = childNodeWithName("playButton") as! MSButtonNode
 ```
 >
 
-Now the button is connected you need to some code to execute when the button is touched.
+Now the button is connected you need to add some code to execute when the button is touched.
 
 > [action]
 > Add the following code to `didMoveToView(...)`
@@ -108,7 +108,7 @@ Great, now you are changing the game state state, yet on it's own it doesn't mea
 ```
 /* Game not ready to play */
 if state == .GameOver || state == .Title { return }
-
+>
 /* Game begins on first touch */
 if state == .Ready {
    state = .Playing
@@ -142,7 +142,7 @@ let firstPiece = sushiTower.first as SushiPiece!
 ```
 >
 ```
-/* Check character side against sushi piece side (this is our death collision check)*/
+/* Check character side against sushi piece side (this is the death collision check)*/
 if character.side == firstPiece.side {
 >
    /* Drop all the sushi pieces down a place (visually) */
@@ -191,7 +191,7 @@ func gameOver() {
     /* Change play button selection handler */
     playButton.selectedHandler = {
 >        
-        /* Grab reference to our SpriteKit view */
+        /* Grab reference to the SpriteKit view */
         let skView = self.view as SKView!
 >        
         /* Load Game scene */

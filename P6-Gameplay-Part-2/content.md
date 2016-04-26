@@ -3,7 +3,7 @@ title: Player health and scoring
 slug: gameplay-part-2
 ---
 
-Let's expand upon our gameplay with the a health mechanic to add time pressure to our players actions and of course the quintessential indicator of success, the score label!
+Let's expand upon your gameplay with the a health mechanic to add time pressure to the players actions and of course the quintessential indicator of success, the score label!
 
 #Adding the health bar
 
@@ -76,10 +76,10 @@ A great place to add a steady decline would be in the `update(..)` method.
 override func update(currentTime: CFTimeInterval) {
   /* Called before each frame is rendered */
   if state != .Playing { return }
-
+>
   /* Decrease Health */
   health -= 0.01
-
+>
   /* Has the player ran out of health? */
   if health < 0 { gameOver() }
 }
@@ -95,7 +95,7 @@ Run the game... The health bar should tick down and you eventually die and there
 To counter balance this decline you should give the player health every time they successfully punch the sushi.
 
 > [action]
-> After the collision check in `didMoveToView(...)` add:
+> After the collision check in `touchesBegan(...)` add:
 >
 ```
 /* Increment Health */
@@ -127,7 +127,7 @@ Run the game again... Excellent
 Adding the score is very similar to adding health.  You will need to add a *SKLabel* to the *GameScene* to display the player's score in the scene and also a counter property to track the score and use this value to refresh the label.
 
 > [action]
-> Open *GameScene.sks* and drag across an *Label* from the *Object Library*, if you're having problems selecting the label to move it once it's in the scene.  You can also use the **Arrow Keys**, **Hold Shift** to move it in larger steps. You can of course set the *Position* to something like `(160,340)`
+> Open *GameScene.sks* and drag across a *Label* from the *Object Library*, if you're having problems selecting the label to move it once it's in the scene.  You can also use the **Arrow Keys**, **Hold Shift** to move it in larger steps. You can of course set the *Position* to something like `(160,340)`
 > Set the *Name* to `scoreLabel` and change the *Font* to something you like.
 > ![Score font selection](../Tutorial-Images/xcode_screenshot_font_selection.png)
 > Set the *Text* to `0` and set the *Z-Position* to `100`

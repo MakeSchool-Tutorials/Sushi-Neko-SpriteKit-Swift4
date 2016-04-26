@@ -34,4 +34,4 @@ Your project structure should hopefully look similar to this:
 
 #Summary
 
-Great, you now have everything in place to get started building our game.
+Great, you now have everything in place to get started building your game.

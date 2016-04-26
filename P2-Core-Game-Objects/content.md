@@ -22,7 +22,7 @@ It's nice to work with a backdrop, so let's add this before working on the core 
 
 #Creating Sushi
 
-Sushi is a key ingredient in our game mechanic, you will use it to build a sushi tower. To create the tower you will be randomly stacking sushi, before you can stack the tower you need to build a core piece of sushi.  This master piece will contain two chopsticks, one on the left and one on the right.  
+Sushi is a key ingredient in the game mechanic, you will use it to build a sushi tower. To create the tower you will be randomly stacking sushi, before you can stack the tower you need to build a core piece of sushi.  This master piece will contain two chopsticks, one on the left and one on the right.  
 
 This will enable 3 possible sushi pieces:
 
@@ -35,7 +35,7 @@ Let's setup this master sushi piece.
 > [action]
 > Drag in *roll.png* and place it in the center of the screen near the bottom. I would suggest around `(160,160)`, set the *Name* to `sushiBasePiece`.
 > Drag in *chopstick.png* and move it to the top-left side of the *sushiBasePiece*.
-> You want this *chopstick* to be part of our **Sushi Piece**, set *Parent* to `sushiBasePiece` and I would suggest a position of around `(-92,37)`.  Set the *Name* to `leftChopstick`
+> You want this *chopstick* to be part of your **Sushi Piece**, set *Parent* to `sushiBasePiece` and I would suggest a position of around `(-92,37)`.  Set the *Name* to `leftChopstick`
 >
 > ![Left chopstick setup](../Tutorial-Images/xcode_spritekit_leftchopstick.png)
 >
@@ -56,7 +56,7 @@ An *Enumeration* would work well for the first job, knowing what *Side* the chop
 when you need to test for cat vs chopstick collisions.
 
 > [action]
-> Add the following code to the top of *GameScene.sks* before the class definition.
+> Add the following code to the top of *GameScene.swift* before the class definition.
 >
 ```
 /* Tracking enum for use with character and sushi side */
@@ -119,8 +119,8 @@ Let's setup a function to handle this.
 >
 ```
 func connectChopsticks() {
-  /* Connect our child chopstick nodes */
-
+  /* Connect the child chopstick nodes */
+>
   rightChopstick = childNodeWithName("rightChopstick") as! SKSpriteNode
   leftChopstick = childNodeWithName("leftChopstick") as! SKSpriteNode
 }
@@ -168,7 +168,7 @@ side = .None
 ```
 >
 
-The default *side* will be set to `.None`, you're not quite ready to run the game yet. You need to connect the **sushiBasePiece** into our *GameScene.swift*
+The default *side* will be set to `.None`, you're not quite ready to run the game yet. You need to connect the **sushiBasePiece** into your *GameScene.swift*
 
 #Connecting the sushi
 
@@ -209,7 +209,7 @@ Awesome, let's add the heroic feline.
 
 #Adding the cat
 
-Time for our feline friend to enter the fray.
+Time for your feline friend to enter the fray.
 
 > [action]
 > Drag in *character.png* and place it in on the left side of the sushi, set the *Z Position* to `1`.  A *Position* of `(70,165)` looks pretty good.  Set *Name* to `character` and *Custom Class* to `Character`.
