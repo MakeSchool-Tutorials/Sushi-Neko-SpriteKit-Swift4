@@ -19,6 +19,15 @@ slug: new-spritekit-project
 > ![Xcode file import options](../Tutorial-Images/xcode_adding_files_flags.png)
 >
 
+<!-- -->
+
+> [action]
+> Download the [SFX Starter Kit](../SFX.zip) we add for you. Once the download is complete, unpack the folder and add
+to the project.
+> Ensure you have *Copy items if needed* and *Create groups*.
+> ![Xcode file import options](../Tutorial-Images/xcode_adding_files_flags.png)
+>
+
 ##Adding extra functionality
 
 SpriteKit is missing some useful functionality, thankfully we have bundled some together for you.  

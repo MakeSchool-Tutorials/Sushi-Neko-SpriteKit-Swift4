@@ -70,6 +70,16 @@ This will open up the empty *AnimationActions.sks*, and you should have an empty
 > ![AnimateWithTextures attributes](../Tutorial-Images/xcode_spritekit_animatewithtextures_attributes.png)
 >
 
+##Adding sound to the timeline
+
+Let's enhance the punch with a swipe sound effect.  You can tie this into the punch animation by adding a sound action to the timeline.
+
+> [action]
+> Drag the *PlaySoundFileNamed* action across to the `Punch` timeline, add it at `0` below the *Animate With Textures* action. Set the *Filename* to `sfx_swipe`.
+> ![Adding sound to the timeline](../Tutorial-Images/xcode_spritekit_add_sfx_timeline.png)
+>
+
+
 ##Applying the action
 
 You will run this custom **Punch** action in whenever the *side* is set for the cat.
