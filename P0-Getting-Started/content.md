@@ -1,5 +1,5 @@
 ---
-title: Getting started with Sushi Neko!
+title: "Getting started with Sushi Neko!"
 slug: getting-started
 ---
 
