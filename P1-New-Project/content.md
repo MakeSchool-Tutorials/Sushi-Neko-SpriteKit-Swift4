@@ -13,7 +13,7 @@ slug: new-spritekit-project
 ##Importing Resources
 
 > [action]
-> Download the [Sushi Neko Art Pack](../assets.atlas.zip) we created for you.
+> Download the [Sushi Neko Art Pack](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift/raw/master/assets.atlas.zip) we created for you.
 > Once the download is complete, unpack the folder and add it to your project.
 > Ensure you have *Copy items if needed* and *Create groups*.
 > ![Xcode file import options](../Tutorial-Images/xcode_adding_files_flags.png)
@@ -22,7 +22,7 @@ slug: new-spritekit-project
 <!-- -->
 
 > [action]
-> Download the [SFX Starter Kit](../SFX.zip) we add for you. Once the download is complete, unpack the folder and add
+> Download the [SFX Starter Kit](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift/raw/master/SFX.zip) we add for you. Once the download is complete, unpack the folder and add
 to the project.
 > Ensure you have *Copy items if needed* and *Create groups*.
 > ![Xcode file import options](../Tutorial-Images/xcode_adding_files_flags.png)
@@ -33,7 +33,7 @@ to the project.
 SpriteKit is missing some useful functionality, thankfully we have bundled some together for you.  
 
 > [action]
-> Download the [MakeSchool Utilities](../Utils.zip), unpack the folder and add it to your project as you
+> Download the [MakeSchool Utilities](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift/raw/master/Utils.zip), unpack the folder and add it to your project as you
 did with the art pack.
 >
 
