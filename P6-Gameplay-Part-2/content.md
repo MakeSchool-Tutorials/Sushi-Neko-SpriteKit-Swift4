@@ -3,7 +3,7 @@ title: Player health and scoring
 slug: gameplay-part-2
 ---
 
-Let's expand upon your gameplay with the a health mechanic to add time pressure to the players actions and of course the quintessential indicator of success, the score label!
+Let's expand upon your gameplay with a health mechanic to add time pressure to the player's actions and of course the quintessential indicator of success, the score label!
 
 #Adding the health bar
 
@@ -80,7 +80,7 @@ override func update(currentTime: CFTimeInterval) {
   /* Decrease Health */
   health -= 0.01
 >
-  /* Has the player ran out of health? */
+  /* Has the player run out of health? */
   if health < 0 { gameOver() }
 }
 ```
@@ -127,7 +127,7 @@ Run the game again... Excellent
 Adding the score is very similar to adding health.  You will need to add a *SKLabel* to the *GameScene* to display the player's score in the scene and also a counter property to track the score and use this value to refresh the label.
 
 > [action]
-> Open *GameScene.sks* and drag across a *Label* from the *Object Library*, if you're having problems selecting the label to move it once it's in the scene.  You can also use the **Arrow Keys**, **Hold Shift** to move it in larger steps. You can of course set the *Position* to something like `(160,340)`
+> Open *GameScene.sks* and drag across a *Label* from the *Object Library*. If you're having problems selecting the label to move it once it's in the scene,  you can also use the **Arrow Keys**, **Hold Shift** to move it in larger steps. You can of course set the *Position* to something like `(160,340)`
 > Set the *Name* to `scoreLabel` and change the *Font* to something you like.
 > ![Score font selection](../Tutorial-Images/xcode_screenshot_font_selection.png)
 > Set the *Text* to `0` and set the *Z-Position* to `100`
@@ -168,7 +168,7 @@ When the score value changes the *text* property of the *scoreLabel* is updated 
 Time to give the player some points.
 
 > [action]
-> Add the following code after:
+> Add the following code to `touchesBegan(...)` after:
 >
 ```
 /* Increment Health */

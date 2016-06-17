@@ -72,7 +72,7 @@ The *newPiece* is then added to the scene and also added to the *sushiTower* arr
 
 ##Seeding the tower
 
-Before you move on top random generation, it would be a good idea to test this works and stack the tower with a couple of starting pieces. This way you can always guarantee the cat starts in a safe position.
+Before you move on to random generation, it would be a good idea to test this works and stack the tower with a couple of starting pieces. This way you can always guarantee the cat starts in a safe position.
 
 > [action]
 > Add the following to the end of `didMoveToView(...)`

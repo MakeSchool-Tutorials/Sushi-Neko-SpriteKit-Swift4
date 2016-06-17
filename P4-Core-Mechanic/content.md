@@ -5,7 +5,7 @@ slug: core-mechanic
 
 #When cats attack
 
-Time to work on the games core mechanic, it's a lesser known fact that cat's will punch sushi as all they want is some sashimi.  Cats can also navigate space and time to teleport instantly from one side of the screen to the other and knock those sushi clean out of the sushi tower.
+Time to work on the game's core mechanic, it's a lesser known fact that cats will punch sushi as all they want is some sashimi.  Cats can also navigate space and time to teleport instantly from one side of the screen to the other and knock those sushi clean out of the sushi tower.
 
 You will be adding a simple touch mechanic to the game, if the player touches anywhere on the left/right hand side of the screen, the cat will be moved to the left/right side and then punch the first piece of sushi in the sushi tower.
 
@@ -33,7 +33,7 @@ override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 ```
 >
 
-You are performing a simple check to decide which side of the screen was touched.  Remember the property observer *didSet*, that you setup in *Character.swift* (Take a quick look)? When you set the *side* property the cat will move set its position appropriately.
+You are performing a simple check to decide which side of the screen was touched.  Remember the property observer *didSet*, that you setup in *Character.swift* (Take a quick look)? When you set the *side* property the cat will set its position appropriately.
 
 Run the game... You should have a working cat teleporter.
 
@@ -65,7 +65,7 @@ This will open up the empty *AnimationActions.sks*, and you should have an empty
 > ![Add AnimateWithTextures action](../Tutorial-Images/xcode_spritekit_add_animatewithtextures_action.png)
 >
 > To build the animation you need to drag in the *character2.png* and *character3.png* from the *Media Library* into the *Textures* box of the new action.
-> Set the *duration* to `0.15` as a punch should be snappy and **tick** `Restore`, this ensures when the punch is complete the cat will go back to it's default stance.
+> Set the *duration* to `0.15` as a punch should be snappy and **tick** `Restore`, this ensures when the punch is complete the cat will go back to its default stance.
 >
 > ![AnimateWithTextures attributes](../Tutorial-Images/xcode_spritekit_animatewithtextures_attributes.png)
 >
@@ -82,7 +82,7 @@ Let's enhance the punch with a swipe sound effect.  You can tie this into the pu
 
 ##Applying the action
 
-You will run this custom **Punch** action in whenever the *side* is set for the cat.
+You will run this custom **Punch** action whenever the *side* is set for the cat.
 
 > [action]
 > Open *Character.swift*, add the following inside the *didSet* observer after the `if/else` statement block.
@@ -100,7 +100,7 @@ Run the game. Your cat should be able to punch now!
 
 #Sushi tower
 
-Looking good, next you will need to manage the sushi stack in response to a punch, this will involve.
+Looking good, next you will need to manage the sushi stack in response to a punch, this will involve:
 
 - Removing the punched sushi from the sushi tower
 - Adding a new random sushi to the top of the tower
@@ -238,11 +238,11 @@ Now run the game.... Flying sushi!
 
 #Summary
 
-Great job, you've achieved a lot in this chapter, the game's core mechanic is now in place.  You've learnt:
+Great job, you've achieved a lot in this chapter, the game's core mechanic is now in place.  You've learnt to:
 
-- Adding touch controls
-- Building animations visually
-- Running animation sequences in code
-- Management of an array
+- Add touch controls
+- Build animations visually
+- Run animation sequences in code
+- Manage an array
 
 Next it's time to turn this core game mechanic into an actual game.

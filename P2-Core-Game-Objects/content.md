@@ -8,7 +8,7 @@ slug: core-game-objects
 For Sushi Neko you will be using the default portrait orientation. You will need to modify the *GameScene.sks* scene size to a retina iPhone 5 resolution. It's a good design resolution to work with and the artwork was designed for this resolution, it will still work nicely for iPhone 6 upwards :]
 
 > [action]
-> Open *GameScene.sks*, `Zoom Out` until you can see the yellow bounding box of the scene. Click on *Atrributes inspector* and set the *Size* to `(320,568)`
+> Open *GameScene.sks*, `Zoom Out` until you can see the yellow bounding box of the scene. Click on *Attributes inspector* and set the *Size* to `(320,568)`
 > ![GameScene size](../Tutorial-Images/xcode_gamescene_size.png)
 >
 
@@ -281,8 +281,8 @@ Run the game, always good to frequently check everything is working after adding
 Great, you've learnt to:
 
 - Setup the two core objects of this game
-- Create custom sub classes of *SKSpriteNode*
-- Added a custom *Enumeration* type for use in tracking your game objects
-- Implemented property observation with *didSet*
+- Create custom subclasses of *SKSpriteNode*
+- Add a custom *Enumeration* type for use in tracking your game objects
+- Implement property observation with *didSet*
 
 Next you will get started building the Sushi Tower!

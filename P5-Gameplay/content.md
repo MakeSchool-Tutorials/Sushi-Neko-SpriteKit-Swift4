@@ -3,7 +3,7 @@ title: Turning a mechanic into a game
 slug: gameplay
 ---
 
-What is the difference between a game mechanic and a game? You've built the core game mechanic yet on it's own this is not very satisfying for the player.  You need to wrap it up now into a game, the best advice is always, keep it simple!
+What is the difference between a game mechanic and a game? You've built the core game mechanic yet on its own this is not very satisfying for the player.  You need to wrap it up now into a game, the best advice is always, keep it simple!
 
 - What is the challenge for the player?
 - How can you show the player progression?
@@ -66,7 +66,7 @@ When should you change the GameState change from `.Title` to `.Ready`? Let's add
 > Feel free to explore this class if you've not comes across it before, it's in the **Utils** folder in the *Project Navigator*.  The *MSButtonNode* class is explored in greater detail in the *Hoppy Bunny Tutorial*
 >
 
-Next you need to code connect the *playButton* to the **GameScene* class**, see if you can do this yourself.
+Next you need to code connect the *playButton* to the **GameScene** class, see if you can do this yourself.
 
 > [solution]
 > Open *GameScene.swift* and add following property to the class:
@@ -98,7 +98,7 @@ playButton.selectedHandler = {
 ```
 >
 
-Great, now you are changing the game state state, yet on it's own it doesn't mean much.  You need to use the game state to enable/disable various elements of the game.  You don't want the cat to be able to move until the game is in a `.Ready` state.
+Great, now you are changing the game state, yet on its own it doesn't mean much.  You need to use the game state to enable/disable various elements of the game.  You don't want the cat to be able to move until the game is in a `.Ready` state.
 
 ##Disabling touch
 
@@ -134,7 +134,7 @@ You added a `.GameOver` state, so let's look at the ways the player can die:
 If the player doesn't dodge the chopsticks they should die, there is no need for any advanced collision detection.  You will want to check the *side* of the first piece of sushi against the *side* of the cat.  If they are the same then the player has been hit and Game over.
 
 > [action]
-> Add the following code in `touchesBegan(...)` after:
+> Add the following code in `touchesBegan(...)` after setting character.side:
 >
 ```
 /* Grab sushi piece on top of the base sushi piece, it will always be 'first' */
