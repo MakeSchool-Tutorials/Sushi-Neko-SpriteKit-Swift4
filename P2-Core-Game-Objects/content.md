@@ -212,7 +212,7 @@ Awesome, let's add the heroic feline.
 Time for your feline friend to enter the fray.
 
 > [action]
-> Drag in *character.png* and place it in on the left side of the sushi, set the *Z Position* to `1`.  A *Position* of `(70,165)` looks pretty good.  Set *Name* to `character` and *Custom Class* to `Character`.
+> Drag in *character1.png* and place it in on the left side of the sushi, set the *Z Position* to `1`.  A *Position* of `(70,165)` looks pretty good.  Set *Name* to `character` and *Custom Class* to `Character`.
 >
 
 You may have noticed you don't have a *Character* class yet, let's create one. It's similar to the *SushiPiece* in that you will want to track the *side* of the cat.

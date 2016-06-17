@@ -42,7 +42,7 @@ func addTowerPiece(side: Side) {
    let lastPosition = lastPiece?.position ?? sushiBasePiece.position
    newPiece.position = lastPosition + CGPoint(x: 0, y: 55)
 >   
-   /* Incremenet Z to ensure it's on top of the last piece, default on first piece*/
+   /* Increment Z to ensure it's on top of the last piece, default on first piece*/
    let lastZPosition = lastPiece?.zPosition ?? sushiBasePiece.zPosition
    newPiece.zPosition = lastZPosition + 1
 >   
