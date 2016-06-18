@@ -22,7 +22,7 @@ slug: new-spritekit-project
 <!-- -->
 
 > [action]
-> Download the [SFX Starter Kit](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift/raw/master/SFX.zip) we add for you. Once the download is complete, unpack the folder and add
+> Download the [SFX Starter Kit](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift/raw/master/SFX.zip) we made for you. Once the download is complete, unpack the folder and add
 to the project.
 > Ensure you have *Copy items if needed* and *Create groups*.
 > ![Xcode file import options](../Tutorial-Images/xcode_adding_files_flags.png)

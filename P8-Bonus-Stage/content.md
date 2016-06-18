@@ -7,7 +7,7 @@ Welcome to bonus stage, your challenge should you accept, is to work through the
 
 There are no solutions provided and I would encourage you to discuss potential solutions with your fellow students, it's good to collaborate and often results in new exciting directions.
 
-If you have any challenge suggestions, we would love to hear them.  Please feedback at the [[GitHub Repository](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift)
+If you have any challenge suggestions, we would love to hear them.  Please provide feedback at the [[GitHub Repository](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift)
 
 It would be a good idea to create a **new branch** in your repo for these challenges.
 

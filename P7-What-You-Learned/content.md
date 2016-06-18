@@ -11,7 +11,7 @@ Let's take a look at what you have learned.
 
 ##Core game objects
 
-- **Sub Classing**: Subclassing *SKSpriteNode* to create custom game object classes, to implement specific functionality.
+- **Subclassing**: Subclassing *SKSpriteNode* to create custom game object classes, to implement specific functionality.
 
 - **Enumeration**: Using enumeration to facilitate game object state tracking.
 
@@ -25,7 +25,7 @@ Let's take a look at what you have learned.
 
 ##Core Mechanic
 
-- **Game state managements**: Managing the game state through the game lifecycle from first play to death and back again.
+- **Game state management**: Managing the game state through the game lifecycle from first play to death and back again.
 
 - **User Interface**: Adding a basic user interface for the player.
 
@@ -49,4 +49,4 @@ Let's take a look at what you have learned.
 
 #Bonus stage
 
-If you've made it this far you're ready to face the **bonus stage**, although this content is optional.  I would highly recommend it as it will generate ideas for your own game ideas and give you some essential practical experience.  The challenges are designed to help you round off your game.
+If you've made it this far you're ready to face the **bonus stage**, although this content is optional.  I would highly recommend it as it will generate ideas for your own game and give you some essential practical experience.  The challenges are designed to help you round off your game.
