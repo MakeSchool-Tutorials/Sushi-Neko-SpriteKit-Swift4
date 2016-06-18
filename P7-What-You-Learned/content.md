@@ -35,10 +35,6 @@ Let's take a look at what you have learned.
 
 ##Turning a mechanic into a game
 
-- **Implementing a conveyor belt**: You implemented a conveyor belt system by moving *Scrolling Layer* nodes with child objects attached such as Obstacles and ground.
-
-- **Looping elements**: The ground was looped once it went off screen. You added a second ground image so that at least one full ground was always visible.
-
 - **Health & Score**: Adding health and score mechanics, using game counters and using property observation to reflect these counters visually.
 
 #Solution

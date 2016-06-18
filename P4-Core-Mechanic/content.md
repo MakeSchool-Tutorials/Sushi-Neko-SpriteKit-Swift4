@@ -146,6 +146,7 @@ Run the game... You can see the sushi being removed from the sushi tower.  Great
 
 > [action]
 > Add the following code after the last block:
+>
 ```
 /* Drop all the sushi pieces down one place */
 for node:SushiPiece in sushiTower {
