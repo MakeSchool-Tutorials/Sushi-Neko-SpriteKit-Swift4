@@ -176,6 +176,7 @@ Time to connect the **sushiBasePiece**.
 
 > [action]
 > Open *GameScene.swift* and add the following property to the class.
+>
 ```
 /* Game objects */
 var sushiBasePiece: SushiPiece!
