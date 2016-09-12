@@ -23,8 +23,8 @@ There is a really nice way to create the effect of a bar gradually decreasing in
 try to scale it right now in the scene editor it will scale in a uniform manner, decreasing in size on all sides.  This is due to the *Anchor Point* being set to `(0.5,0.5)`.
 
 > [action]
-> Change the *Anchor Point* of the *healthBar* to the bottom-left `(0,0)`, you may have to reposition it back into place after you do this.
-> Now setting *Scale X* to `0.5`, looks good :], Set it back to `1.0` when finished.
+> Change the *Anchor Point* of the *healthBar* to the bottom-left `(0,0)`, you may have to reposition it back into place
+> after you do this. Now setting *Scale X* to `0.5`, looks good :], Set it back to `1.0` when finished.
 >
 
 You now know how to scale the *healthBar* between `0` and `1` to achieve the desired effect.
@@ -38,6 +38,7 @@ Can you code connect the *healthBar*?
 var healthBar: SKSpriteNode!
 ```
 >
+
 > Next, add this code to `didMoveToView(...)`
 >
 ```
@@ -65,7 +66,9 @@ var health: CGFloat = 1.0 {
 >
 
 Nice, now where do you think the player should gain health and where should they lose health?
-You want the player to feel pressured by time, the longer they take to act the more health they lose.  When they do act they should gain health.  The trick is getting the balance right between loss and gain, something you can tweak yourself from player feedback :]
+You want the player to feel pressured by time, the longer they take to act the more health they lose.  When they do act
+they should gain health.  The trick is getting the balance right between loss and gain, something you can tweak yourself
+from player feedback :]
 
 A great place to add a steady decline would be in the `update(..)` method.
 
@@ -73,20 +76,21 @@ A great place to add a steady decline would be in the `update(..)` method.
 > Replace the existing `update(...)` method with:
 >
 ```
-override func update(currentTime: CFTimeInterval) {
+override func update(_ currentTime: TimeInterval) {
   /* Called before each frame is rendered */
-  if state != .Playing { return }
->
+  if state != .playing { return }
+>    
   /* Decrease Health */
   health -= 0.01
->
-  /* Has the player run out of health? */
+>    
+  /* Has the player ran out of health? */
   if health < 0 { gameOver() }
 }
 ```
 >
 
-This is also a great place to check for the other type of player death due to lack of health.  Again you don't want this to be active until the game is in play.
+This is also a great place to check for the other type of player death due to lack of health.  Again you don't want this
+to be active until the game is in play.
 
 Run the game... The health bar should tick down and you eventually die and there is nothing you can do about it :[
 
@@ -124,15 +128,21 @@ Run the game again... Excellent
 
 #Adding the score
 
-Adding the score is very similar to adding health.  You will need to add a *SKLabel* to the *GameScene* to display the player's score in the scene and also a counter property to track the score and use this value to refresh the label.
+Adding the score is very similar to adding health.  You will need to add a *SKLabel* to the *GameScene* to display the
+player's score in the scene and also a counter property to track the score and use this value to refresh the label.
 
 > [action]
+<<<<<<< HEAD
 > Open *GameScene.sks* and drag across a *Label* from the *Object Library*. If you're having problems selecting the label to move it once it's in the scene,  you can also use the **Arrow Keys**, **Hold Shift** to move it in larger steps. You can of course set the *Position* to something like `(160,340)`
+=======
+> Open *GameScene.sks* and drag across a *Label* from the *Object Library*, if you're having problems selecting the label
+> to move it once it's in the scene.  You can also use the **Arrow Keys**, **Hold Shift** to move it in larger steps. You
+> can of course set the *Position* to something like `(160,340)`
+>>>>>>> 347f06d09b8b1276f9bf26454670e407365b2215
 > Set the *Name* to `scoreLabel` and change the *Font* to something you like.
 > ![Score font selection](../Tutorial-Images/xcode_screenshot_font_selection.png)
 > Set the *Text* to `0` and set the *Z-Position* to `100`
 >
-
 
 Next code connect the *scoreLabel*, see if you can do this one yourself.
 
@@ -142,6 +152,8 @@ Next code connect the *scoreLabel*, see if you can do this one yourself.
 ```
 var scoreLabel: SKLabelNode!
 ```
+>
+
 > Then connect it in `didMoveToView(...)`:
 >
 ```
@@ -149,7 +161,8 @@ scoreLabel = childNodeWithName("scoreLabel") as! SKLabelNode
 ```
 >
 
-Now that you have access to the label, you will want to add a score counter that can be used to track the player's score and then update the *scoreLabel*.
+Now that you have access to the label, you will want to add a score counter that can be used to track the player's score
+and then update the *scoreLabel*.
 
 > [action]
 > Add the following property to the *GameScene* class:
@@ -168,14 +181,16 @@ When the score value changes the *text* property of the *scoreLabel* is updated 
 Time to give the player some points.
 
 > [action]
+<<<<<<< HEAD
 > Add the following code to `touchesBegan(...)` after:
+=======
+> Add the following code in touchesBegan(...) after:
+>>>>>>> 347f06d09b8b1276f9bf26454670e407365b2215
 >
 ```
 /* Increment Health */
 health += 0.1
-```
 >
-```
 /* Increment Score */
 score += 1
 ```

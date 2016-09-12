@@ -5,9 +5,12 @@ slug: core-mechanic
 
 #When cats attack
 
-Time to work on the game's core mechanic, it's a lesser known fact that cats will punch sushi as all they want is some sashimi.  Cats can also navigate space and time to teleport instantly from one side of the screen to the other and knock those sushi clean out of the sushi tower.
+Time to work on the games core mechanic, it's a lesser known fact that cat's will punch sushi as all they want is some
+sashimi.  Cats can also navigate space and time to teleport instantly from one side of the screen to the other and knock
+those sushi clean out of the sushi tower.
 
-You will be adding a simple touch mechanic to the game, if the player touches anywhere on the left/right hand side of the screen, the cat will be moved to the left/right side and then punch the first piece of sushi in the sushi tower.
+You will be adding a simple touch mechanic to the game, if the player touches anywhere on the left/right hand side of the
+screen, the cat will be moved to the left/right side and then punch the first piece of sushi in the sushi tower.
 
 ##Touch control
 
@@ -15,25 +18,28 @@ You will be adding a simple touch mechanic to the game, if the player touches an
 > Replace the `touchBegan(...)` method with the following:
 >
 ```
-override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
    /* Called when a touch begins */
->
-    for touch in touches {
-      /* Get touch position in scene */
-      let location = touch.locationInNode(self)
+>   
+   /* We only need a single touch here */
+   let touch = touches.first!
+>     
+   /* Get touch position in scene */
+   let location = touch.location(in: self)
 >        
-      /* Was touch on left/right hand side of screen? */
-      if location.x > size.width / 2 {
-        character.side = .Right
-      } else {
-        character.side = .Left
-      }
-    }
+   /* Was touch on left/right hand side of screen? */
+   if location.x > size.width / 2 {
+      character.side = .right
+   } else {
+      character.side = .left
+   }
 }
 ```
 >
 
-You are performing a simple check to decide which side of the screen was touched.  Remember the property observer *didSet*, that you setup in *Character.swift* (Take a quick look)? When you set the *side* property the cat will set its position appropriately.
+You are performing a simple check to decide which side of the screen was touched.  Remember the property observer *didSet*,
+that you setup in *Character.swift* (Take a quick look)? When you set the *side* property the cat will move set its position
+appropriately.
 
 Run the game... You should have a working cat teleporter.
 
@@ -64,8 +70,10 @@ This will open up the empty *AnimationActions.sks*, and you should have an empty
 > Expand then **Punch** action timeline, click on the *Object library* and drag across an *AnimateWithTextures Action*.
 > ![Add AnimateWithTextures action](../Tutorial-Images/xcode_spritekit_add_animatewithtextures_action.png)
 >
-> To build the animation you need to drag in the *character2.png* and *character3.png* from the *Media Library* into the *Textures* box of the new action.
-> Set the *duration* to `0.15` as a punch should be snappy and **tick** `Restore`, this ensures when the punch is complete the cat will go back to its default stance.
+> To build the animation you need to drag in the *character2.png* and *character3.png* from the *Media Library* into the
+> *Textures* box of the new action.
+> Set the *duration* to `0.15` as a punch should be snappy and **tick** `Restore`, this ensures when the punch is complete
+> the cat will go back to it's default stance.
 >
 > ![AnimateWithTextures attributes](../Tutorial-Images/xcode_spritekit_animatewithtextures_attributes.png)
 >
@@ -109,7 +117,8 @@ Looking good, next you will need to manage the sushi stack in response to a punc
 Let's tackle removing and adding sushi before applying the visual polish.
 
 > [action]
-> Open *GameScene.swift* and add the following code inside `touchBegan(...)` immediately after the **if/else** statement block.
+> Open *GameScene.swift* and add the following code inside `touchBegan(...)` immediately after the **if/else** statement
+> block.
 >
 ```
 /* Remove from sushi tower array */
@@ -120,7 +129,8 @@ addRandomPieces(1)
 ```
 >
 
-Run the game.... Well nothing much happens, this is because you are managing the sushi tower array correctly.  However, you are not removing the sushi visually from the scene.  
+Run the game.... Well nothing much happens, this is because you are managing the sushi tower array correctly.  However, you
+are not removing the sushi visually from the scene.  
 
 ##Improving the cycle
 
@@ -140,7 +150,8 @@ addRandomPieces(1)
 ```
 >
 
-Run the game... You can see the sushi being removed from the sushi tower.  Great, yet not quite what you want, would be better if the remaining sushi would drop down a position. Let's add this.
+Run the game... You can see the sushi being removed from the sushi tower.  Great, yet not quite what you want, would be
+better if the remaining sushi would drop down a position. Let's add this.
 
 ##Moving the tower
 
@@ -149,18 +160,21 @@ Run the game... You can see the sushi being removed from the sushi tower.  Great
 >
 ```
 /* Drop all the sushi pieces down one place */
-for node:SushiPiece in sushiTower {
-  node.runAction(SKAction.moveBy(CGVector(dx: 0, dy: -55), duration: 0.10))
->
-  /* Reduce zPosition to stop zPosition climbing over UI */
-  node.zPosition -= 1
+for sushiPiece in sushiTower {
+   sushiPiece.run(SKAction.move(by: CGVector(dx: 0, dy: -55), duration: 0.10))
+>    
+   /* Reduce zPosition to stop zPosition climbing over UI */
+   sushiPiece.zPosition -= 1
 }
 ```
 >
 
 Run the game... Should look a lot better now.
 
-You're applying a *moveBy* action to move every piece of sushi in the sushi tower down by `55` pixels. You're also decreasing the *Z-Position* of each piece.  If you recall every time a new piece is added the *Z-Position* is incremented, the problem here is as the position climbs it will eventually become higher than other visual elements such as the UI.  This way you keep the *Z-Position* of all the pieces in a manageable range.
+You're applying a *moveBy* action to move every piece of sushi in the sushi tower down by `55` pixels. You're also
+decreasing the *Z-Position* of each piece.  If you recall every time a new piece is added the *Z-Position* is incremented,
+the problem here is as the position climbs it will eventually become higher than other visual elements such as our UI.  
+This way you keep the *Z-Position* of all the pieces in a manageable range.
 
 #Animating the sushi
 
@@ -178,45 +192,49 @@ Time for you to add a bit of polish and create two new action animations.
 >
 > ![FlipRight action](../Tutorial-Images/xcode_spritekit_action_flipright.png)
 
-Great, you will need a FlipLeft action as well, it is possible to *Duplicate* an action.  However, there is no way to rename it which isn't so great.
+Great, you will need a FlipLeft action as well, it is possible to *Duplicate* an action.  However, there is no way to
+rename it which isn't so great.
 
 > [action]
 > Create a new action called `FlipLeft`
 > Copy the two actions from **FlipRight** into the **FlipLeft** timeline.
 > Modify the *Offset X* of the *Move Action* to `-300`
->
 
-Now you have two actions ready to be run in your game code. You will create a new method in *SushiPiece.swift* to facilitate this.
+Now you have two actions ready to be run in your game code. You will create a new method in *SushiPiece.swift* to
+facilitate this.
 
 > [action]
 > Open *SushiPiece.swift* and add the following method to the class:
 >
 ```
-func flip(side: Side) {
-  /* Flip the sushi out of the screen */
->
-  var actionName: String = ""
->  
-  if side == .Left {
+func flip(_ side: Side) {
+   /* Flip the sushi out of the screen */
+>   
+   var actionName: String = ""
+>   
+   if side == .left {
       actionName = "FlipRight"
-  } else if side == .Right {
+   } else if side == .right {
       actionName = "FlipLeft"
-  }
->  
-  /* Load appropriate action */
-  let flip = SKAction(named: actionName)!
->  
-  /* Create a node removal action */
-  let remove = SKAction.removeFromParent()
->  
-  /* Build sequence, flip then remove from scene */
-  let sequence = SKAction.sequence([flip,remove])
-  runAction(sequence)
+   }
+>   
+   /* Load appropriate action */
+   let flip = SKAction(named: actionName)!
+>   
+   /* Create a node removal action */
+   let remove = SKAction.removeFromParent()
+>   
+   /* Build sequence, flip then remove from scene */
+   let sequence = SKAction.sequence([flip,remove])
+   run(sequence)
 }
 ```
 >
 
-Read through the comments, most of this should already be familiar to you.  You may not have seen the last section of code in which you build a *SKAction.sequence*, which is simply joining actions together.  In this case when the **Flip** animation is complete you want the sushi to be removed from the game.  Currently in the code you are calling *removeFromParent()* to instantly remove the sushi, so the player will never see the anination.
+Read through the comments, most of this should already be familiar to you.  You may not have seen the last section of code
+in which you build a *SKAction.sequence*, which is simply joining actions together.  In this case when the **Flip**
+animation is complete you want the sushi to be removed from the game.  Currently in the code you are calling
+*removeFromParent()* to instantly remove the sushi, so the player will never see the anination.
 
 > [action]
 > Open *GameScene.swift* and replace the following inside `touchesBegan(...)`

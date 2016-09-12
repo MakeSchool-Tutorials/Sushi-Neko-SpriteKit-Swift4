@@ -24,7 +24,8 @@ Let's keep it simple to start with and add a Play button that will also serve as
 
 #GameState management
 
-As it stands we have no idea what state the game is in, before we introduce additional elements we need to know what state the game is in.  Are we waiting for the player to press play? Is the game in progress? Did the player just die?
+As it stands we have no idea what state the game is in, before we introduce additional elements we need to know what
+state the game is in.  Are we waiting for the player to press play? Is the game in progress? Did the player just die?
 
 Previously you used an *Enumeration* type to define the possible *side* states for the cat and sushi.
 
@@ -34,12 +35,12 @@ Previously you used an *Enumeration* type to define the possible *side* states f
 ```
 /* Tracking enum for game state */
 enum GameState {
-    case Title, Ready, Playing, GameOver
+    case title, ready, playing, gameOver
 }
 ```
 >
 
-You will need to implement a tracking property to the GameScene class, let's default it to `.Title` as you would expect
+You will need to implement a tracking property to the GameScene class, let's default it to `.title` as you would expect
 this to be first state the player experiences after opening the game.
 
 > [action]
@@ -47,13 +48,13 @@ this to be first state the player experiences after opening the game.
 >
 ```
 /* Game management */
-var state: GameState = .Title
+var state: GameState = .title
 ```
 >
 
 ##Play button
 
-When should you change the GameState change from `.Title` to `.Ready`? Let's add a play button.
+When should you change the GameState change from `.title` to `.ready`? Let's add a play button.
 
 > [action]
 > Open *GameScene.sks* and drag *button.png* to the bottom-middle of the scene, just below the sushi base.
@@ -74,7 +75,7 @@ Next you need to code connect the *playButton* to the **GameScene** class, see i
 ```
 var playButton: MSButtonNode!
 ```
->
+
 > Next create the connection in `didMoveToView(...)`
 >
 ```
@@ -92,13 +93,15 @@ Now the button is connected you need to add some code to execute when the button
 /* Setup play button selection handler */
 playButton.selectedHandler = {
 >
-   /* Start game */
-   self.state = .Ready
+    /* Start game */
+    self.state = .ready
 }
 ```
 >
 
-Great, now you are changing the game state, yet on its own it doesn't mean much.  You need to use the game state to enable/disable various elements of the game.  You don't want the cat to be able to move until the game is in a `.Ready` state.
+Great, now you are changing the game state state, yet on it's own it doesn't mean much.  You need to use the game state
+to enable/disable various elements of the game.  You don't want the cat to be able to move until the game is in a
+`.ready` state.
 
 ##Disabling touch
 
@@ -107,31 +110,34 @@ Great, now you are changing the game state, yet on its own it doesn't mean much.
 >
 ```
 /* Game not ready to play */
-if state == .GameOver || state == .Title { return }
->
+if state == .gameOver || state == .title { return }
 /* Game begins on first touch */
-if state == .Ready {
-   state = .Playing
+if state == .ready {
+   state = .playing
 }
 ```
 >
 
-You want to disable touch when the player is not `.Playing`, the first line covers this by simply returning from the method when the player is on the title screen or dead.
+You want to disable touch when the player is not `.Playing`, the first line covers this by simply returning from the
+method when the player is on the title screen or dead.
 
-The next line adds a little nuance, when the player press the button the game changes to a `.Ready` state.  However, we don't want the game to begin until that first screen touch by the player.
+The next line adds a little nuance, when the player press the button the game changes to a `.Ready` state.  However,
+we don't want the game to begin until that first screen touch by the player.
 
 Run the game... Hopefully you can't control the cat until you've hit the play button first :]
 
 #Game Over
 
-You added a `.GameOver` state, so let's look at the ways the player can die:
+You added a `.gameOver` state, so let's look at the ways the player can die:
 
 - The player gets hit by a chopstick
 - The player runs out of health
 
 ##Death by chopstick
 
-If the player doesn't dodge the chopsticks they should die, there is no need for any advanced collision detection.  You will want to check the *side* of the first piece of sushi against the *side* of the cat.  If they are the same then the player has been hit and Game over.
+If the player doesn't dodge the chopsticks they should die, there is no need for any advanced collision detection.  
+You will want to check the *side* of the first piece of sushi against the *side* of the cat.  If they are the same then
+the player has been hit and Game over.
 
 > [action]
 > Add the following code in `touchesBegan(...)` after setting character.side:
@@ -140,25 +146,26 @@ If the player doesn't dodge the chopsticks they should die, there is no need for
 /* Grab sushi piece on top of the base sushi piece, it will always be 'first' */
 let firstPiece = sushiTower.first as SushiPiece!
 ```
->
+> Add this
 ```
-/* Check character side against sushi piece side (this is the death collision check)*/
-if character.side == firstPiece.side {
->
-   /* Drop all the sushi pieces down a place (visually) */
-   for node:SushiPiece in sushiTower {
-       node.runAction(SKAction.moveBy(CGVector(dx: 0, dy: -55), duration: 0.10))
-   }
->
-   gameOver()
->
-   /* No need to continue as player dead */
-   return
+/* Check character side against sushi piece side (this is our death collision check)*/
+if character.side == firstPiece?.side {
+>        
+    /* Drop all the sushi pieces down a place (visually) */
+    for sushiPiece in sushiTower {
+        sushiPiece.run(SKAction.move(by: CGVector(dx: 0, dy: -55), duration: 0.10))
+    }
+>        
+    gameOver()
+>        
+    /* No need to continue as player dead */
+    return
 }
 ```
 >
 
-That was a cheap and easy collision check, you may have noticed the visual sushi tower drop code is being used in the same method twice.
+That was a cheap and easy collision check, you may have noticed the visual sushi tower drop code is being used in the
+same method twice.
 
 > [challenge]
 > Why don't you refactor this code into a new method?
@@ -177,16 +184,16 @@ Now you need to add a *gameOver* method, you will want to:
 ```
 func gameOver() {
     /* Game over! */
->  
-    state = .GameOver
+>    
+    state = .gameOver
 >    
     /* Turn all the sushi pieces red*/
-    for node:SushiPiece in sushiTower {
-        node.runAction(SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50))
+    for sushiPiece in sushiTower {
+        sushiPiece.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
     }
 >    
     /* Make the player turn red */
-    character.runAction(SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.50))
+    character.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
 >    
     /* Change play button selection handler */
     playButton.selectedHandler = {
@@ -198,17 +205,17 @@ func gameOver() {
         let scene = GameScene(fileNamed:"GameScene") as GameScene!
 >        
         /* Ensure correct aspect mode */
-        scene.scaleMode = .AspectFill
+        scene?.scaleMode = .aspectFill
 >        
         /* Restart GameScene */
-        skView.presentScene(scene)
+        skView?.presentScene(scene)
     }
 }
 ```
 >
 
-Read through the comments, most of this should be familiar. For a visual effect you're using the *SKAction.colorizeWithColor* to turn
-the tower and cat red.
+Read through the comments, most of this should be familiar. For a visual effect you're using the
+*SKAction.colorizeWithColor* to turn the tower and cat red.
 
 > [challenge]
 > Have some fun with the game over sequence :]
