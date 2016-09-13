@@ -188,7 +188,7 @@ var sushiBasePiece: SushiPiece!
 ```
 >
 
-> Next create the code connection in `didMoveToView(...)`
+> Next create the code connection in `didMove(to:)`
 >
 ```
 /* Connect game objects */
@@ -203,7 +203,7 @@ You need to ensure the *connectChopsticks* method is called. A good place to add
 
 > [action]
 > Open *GameScene.swift* and add a call to this method anywhere after the **sushiBasePiece** code connection
-> in `didMoveToView(...)`
+> in `didMove(to:)`
 >
 ```
 /* Setup chopstick connections */
@@ -280,7 +280,7 @@ var character: Character!
 ```
 >
 
-> Next create the code connection in `didMoveToView(...)`
+> Next create the code connection in `didMove(to:)`
 >
 ```
 /* Connect game objects */

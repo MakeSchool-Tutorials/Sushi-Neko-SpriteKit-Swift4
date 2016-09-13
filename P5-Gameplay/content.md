@@ -76,7 +76,7 @@ Next you need to code connect the *playButton* to the **GameScene** class, see i
 var playButton: MSButtonNode!
 ```
 
-> Next create the connection in `didMoveToView(...)`
+> Next create the connection in `didMove(to:)`
 >
 ```
 /* UI game objects */
@@ -87,7 +87,7 @@ playButton = childNodeWithName("playButton") as! MSButtonNode
 Now the button is connected you need to add some code to execute when the button is touched.
 
 > [action]
-> Add the following code to `didMoveToView(...)`
+> Add the following code to `didMove(to:)`
 >
 ```
 /* Setup play button selection handler */
@@ -118,10 +118,10 @@ if state == .ready {
 ```
 >
 
-You want to disable touch when the player is not `.Playing`, the first line covers this by simply returning from the
+You want to disable touch when the player is not `.playing`, the first line covers this by simply returning from the
 method when the player is on the title screen or dead.
 
-The next line adds a little nuance, when the player press the button the game changes to a `.Ready` state.  However,
+The next line adds a little nuance, when the player press the button the game changes to a `.ready` state.  However,
 we don't want the game to begin until that first screen touch by the player.
 
 Run the game... Hopefully you can't control the cat until you've hit the play button first :]
@@ -174,7 +174,7 @@ same method twice.
 
 Now you need to add a *gameOver* method, you will want to:
 
-- Set the gameState to `.GameOver`.
+- Set the gameState to `.gameOver`.
 - Provide a way for the player to restart the game
 - Be nice to add some visual indicator of death
 

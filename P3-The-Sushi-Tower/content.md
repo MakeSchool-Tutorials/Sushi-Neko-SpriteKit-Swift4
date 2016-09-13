@@ -86,7 +86,7 @@ Before you move on top random generation, it would be a good idea to test this w
 starting pieces. This way you can always guarantee the cat starts in a safe position.
 
 > [action]
-> Add the following to the end of `didMoveToView(...)`
+> Add the following to the end of `didMove(to:)`
 >
 ```
 /* Manually stack the start of the tower */
@@ -159,7 +159,7 @@ and added to the tower.
 Why don't you try out this method and add `10` new sushi pieces to the tower.
 
 > [solution]
-> Add the following code to the end of `didMoveToView(...)`
+> Add the following code to the end of `didMove(to:)`
 >
 ```
 /* Randomize tower to just outside of the screen */

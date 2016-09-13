@@ -39,7 +39,7 @@ var healthBar: SKSpriteNode!
 ```
 >
 
-> Next, add this code to `didMoveToView(...)`
+> Next, add this code to `didMove(to:)`
 >
 ```
 healthBar = childNodeWithName("healthBar") as! SKSpriteNode
@@ -154,7 +154,7 @@ var scoreLabel: SKLabelNode!
 ```
 >
 
-> Then connect it in `didMoveToView(...)`:
+> Then connect it in `didMove(to:)`:
 >
 ```
 scoreLabel = childNodeWithName("scoreLabel") as! SKLabelNode
