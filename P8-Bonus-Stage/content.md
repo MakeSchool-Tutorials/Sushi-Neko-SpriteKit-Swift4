@@ -7,11 +7,11 @@ Welcome to bonus stage, your challenge should you accept, is to work through the
 
 There are no solutions provided and I would encourage you to discuss potential solutions with your fellow students, it's good to collaborate and often results in new exciting directions.
 
-If you have any challenge suggestions, we would love to hear them.  Please provide feedback at the [[GitHub Repository](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift)
+If you have any challenge suggestions, we would love to hear them.  Please provide feedback at the [[GitHub Repository](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift3)
 
 It would be a good idea to create a **new branch** in your repo for these challenges.
 
-#Improve the main menu
+# Improve the main menu
 
 The main menu is a little boring, just a play button.  Although this is certainly functional it would be nice to dress this up and at the very least display the game title.
 

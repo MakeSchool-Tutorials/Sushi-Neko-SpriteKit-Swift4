@@ -3,8 +3,6 @@ title: Adding core game objects
 slug: core-game-objects
 ---
 
-#Set the scene
-
 For Sushi Neko you will be using the default portrait orientation. You will need to modify the *GameScene.sks* scene
 size to a retina iPhone 5 resolution. It's a good design resolution to work with and the artwork was designed for this
 resolution, it will still work nicely for iPhone 6 upwards :]

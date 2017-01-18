@@ -21,8 +21,3 @@ Throughout this tutorial you will learn many concepts including how to:
 ![Sushi Neko gameplay](../Tutorial-Images/animated_gameplay.gif)
 
 Time to get started with a new SpriteKit project!
-
-#Feedback
-
-If you have feedback on this tutorial or find any mistakes, please open issues on the
-[GitHub Repository](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift).

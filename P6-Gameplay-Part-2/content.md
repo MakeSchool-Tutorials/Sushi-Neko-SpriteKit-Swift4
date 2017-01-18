@@ -5,7 +5,7 @@ slug: gameplay-part-2
 
 Let's expand upon your gameplay with a health mechanic to add time pressure to the player's actions and of course the quintessential indicator of success, the score label!
 
-#Adding the health bar
+## Adding the health bar
 
 The health bar comprises of two assets, the *life_bg.png* background and the *life.png* health bar.
 
@@ -17,7 +17,7 @@ The health bar comprises of two assets, the *life_bg.png* background and the *li
 
 How do you think you could gracefully decrease the health bar?
 
-##Scaling the bar
+# Scaling the bar
 
 There is a really nice way to create the effect of a bar gradually decreasing in size.  You can scale it.  However, if you
 try to scale it right now in the scene editor it will scale in a uniform manner, decreasing in size on all sides.  This is due to the *Anchor Point* being set to `(0.5,0.5)`.
@@ -48,7 +48,7 @@ healthBar = childNodeWithName("healthBar") as! SKSpriteNode
 
 Great you now have access to the *healthBar* object.  However, you will want to use another property to track the players health and use this value to update the bar visually.
 
-##Health counter
+# Health counter
 
 Let's add a *CGFloat* type property called `health` and make use again of the *didSet* property observer to reflect any changes into the *healthBar*.
 
@@ -94,7 +94,7 @@ to be active until the game is in play.
 
 Run the game... The health bar should tick down and you eventually die and there is nothing you can do about it :[
 
-##Adding health
+# Adding health
 
 To counter balance this decline you should give the player health every time they successfully punch the sushi.
 

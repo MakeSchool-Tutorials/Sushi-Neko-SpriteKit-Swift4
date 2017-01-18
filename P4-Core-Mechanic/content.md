@@ -3,8 +3,6 @@ title: Building the core mechanic
 slug: core-mechanic
 ---
 
-#When cats attack
-
 Time to work on the games core mechanic, it's a lesser known fact that cat's will punch sushi as all they want is some
 sashimi.  Cats can also navigate space and time to teleport instantly from one side of the screen to the other and knock
 those sushi clean out of the sushi tower.

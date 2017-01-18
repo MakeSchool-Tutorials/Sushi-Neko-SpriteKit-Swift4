@@ -10,7 +10,7 @@ the screen, there is no need to generate thousands of pieces :]
 Every time the cat punches a piece out of existence, you will then add a new piece to the top of the array, to create
 the endless cycle of the sushi tower.
 
-#Building the tower
+## Building the tower
 
 The tower is simply an array of *SushiPiece* objects.
 
