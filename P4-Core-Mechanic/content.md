@@ -85,7 +85,7 @@ This will open up the empty *AnimationActions.sks*, and you should have an empty
 > ![AnimateWithTextures attributes](../Tutorial-Images/xcode_spritekit_animatewithtextures_attributes.png)
 >
 
-##Adding sound to the timeline
+## Adding sound to the timeline
 
 Let's enhance the punch with a swipe sound effect.  You can tie this into the punch animation by adding a sound action to the timeline.
 
@@ -95,7 +95,7 @@ Let's enhance the punch with a swipe sound effect.  You can tie this into the pu
 >
 
 
-##Applying the action
+## Applying the action
 
 You will run this custom **Punch** action whenever the *side* is set for the cat.
 
@@ -105,7 +105,7 @@ You will run this custom **Punch** action whenever the *side* is set for the cat
 ```
 /* Load/Run the punch action */
 let punch = SKAction(named: "Punch")!
-runAction(punch)
+run(punch)
 ```
 >
 
@@ -113,7 +113,7 @@ Run the game. Your cat should be able to punch now!
 
 ![Animated cat punch](../Tutorial-Images/animated_cat_punch.gif)
 
-#Sushi tower
+# Sushi tower
 
 Looking good, next you will need to manage the sushi stack in response to a punch, this will involve:
 
@@ -124,7 +124,7 @@ Looking good, next you will need to manage the sushi stack in response to a punc
 Let's tackle removing and adding sushi before applying the visual polish.
 
 > [action]
-> Open *GameScene.swift* and add the following code inside `touchBegan(...)` immediately after the **if/else** statement
+> Open *GameScene.swift* and add the following code inside `touchBegan(_ touches:)` immediately after the **if/else** statement
 > block.
 >
 ```
@@ -139,29 +139,64 @@ addRandomPieces(1)
 Run the game.... Well nothing much happens, this is because you are managing the sushi tower array correctly.  However, you
 are not removing the sushi visually from the scene.  
 
-##Improving the cycle
+## Improving the cycle
 
 > [action]
 > Replace this code block with:
 >
 ```
 /* Grab sushi piece on top of the base sushi piece, it will always be 'first' */
-let firstPiece = sushiTower.first as SushiPiece!
->
-/* Remove from sushi tower array */
-sushiTower.removeFirst()
-firstPiece.removeFromParent()
->
-/* Add a new sushi piece to the top of the sushi tower */
-addRandomPieces(1)
+if let firstPiece = sushiTower.first as SushiPiece! {
+    /* Remove from sushi tower array */
+    sushiTower.removeFirst()
+    firstPiece.removeFromParent()
+    
+    /* Add a new sushi piece to the top of the sushi tower */
+    addRandomPieces(total: 1)
+}
 ```
 >
 
 Run the game... You can see the sushi being removed from the sushi tower.  Great, yet not quite what you want, would be
 better if the remaining sushi would drop down a position. Let's add this.
 
-##Moving the tower
+## Moving the tower
 
+To move the tower down you'll loop through the array of shushi pieces and move each piece to a y position of it's position
+in the array times `55` which is the height of the piece. Instead of moving directly to this position you'll figure the 
+distance to move and move 50% of the distance. if we do this each frame, if the distance was 100 pixels, the piece would 
+move 50 on the first update, 25 on the next, then 12.5, 6.25, 3.125, etc.  
+
+> [action]
+> Add a new method to `GameScene` to handle moving the tower down.
+```
+func moveTowerDown() {
+    var n: CGFloat = 0
+    for piece in sushiTower {
+        let y = (n * 55) + 200
+        piece.position.y -= (piece.position.y - y) * 0.5
+        n += 1
+    }
+}
+```
+>
+
+You'll use the scene's `update(_ currentTime:)` method to move the pieces down. This method is called 60 times per second. 
+It's used for animating and updating game objects (`SKSpriteNodes` mostly) on the screen. If we call `moveTowerDown()`
+with `update(_ currentTime:)` the sushi tower will always move down as pieces are removed. 
+
+> [action] 
+> Add `update(_ currentTime:)` inside `GameScene` start typing "update" wait for Xcode to show the method you want
+> in the code hints. Then choose it and add `moveTowerDown()`. 
+>
+```
+override func update(_ currentTime: TimeInterval) {
+    moveTowerDown()
+}
+```
+>
+
+---
 > [action]
 > Add the following code after the last block:
 >
@@ -175,6 +210,7 @@ for sushiPiece in sushiTower {
 }
 ```
 >
+---
 
 Run the game... Should look a lot better now.
 
