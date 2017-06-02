@@ -4,17 +4,17 @@ slug: core-game-objects
 ---
 
 For Sushi Neko you will be using the default portrait orientation. You will need to modify the *GameScene.sks* scene
-size to a retina iPhone 5 resolution. It's a good design resolution to work with and the artwork was designed for this
-resolution, it will still work nicely for iPhone 6 upwards :]
+size to a iPhone resolution. The artwork was designed for iPhone 6 or 7, and should work for most other screen sizes.
 
 > [action]
-> Open *GameScene.sks*, `Zoom Out` until you can see the yellow bounding box of the scene. Click on
+> Open *GameScene.sks*, delete any default objects. `Zoom Out` until you can see the yellow bounding box of the scene. 
+> Click on
 > *Atrributes inspector* and set the *Size* to `(320,568)`
 >
 > ![GameScene size](../Tutorial-Images/xcode_gamescene_size.png)
 >
 
-##Adding the backdrop
+## Adding the backdrop
 
 It's nice to work with a backdrop, so let's add this before working on the core objects.
 
@@ -22,9 +22,11 @@ It's nice to work with a backdrop, so let's add this before working on the core 
 > Drag *background.png* onto the scene and snap to the center. Set the *Z Position* to `-1`.
 >
 
-#Creating Sushi
+# Creating Sushi
 
-Sushi is a key ingredient in the game mechanic, you will use it to build a sushi tower. To create the tower you will be randomly stacking sushi, before you can stack the tower you need to build a core piece of sushi.  This master piece will contain two chopsticks, one on the left and one on the right.  
+Sushi is a key ingredient in the game mechanic, you will use it to build a sushi tower. To create the tower you will 
+be randomly stacking sushi, before you can stack the tower you need to build a core piece of sushi.  This master piece 
+will contain two chopsticks, one on the left and one on the right.  
 
 This will enable 3 possible sushi pieces:
 
@@ -36,7 +38,7 @@ Let's setup this master sushi piece.
 
 > [action]
 >
-> Drag in *roll.png* and place it in the center of the screen near the bottom. I would suggest around `(160,160)`,
+> Drag in *roll.png* and place it in the center of the screen near the bottom. I would suggest around `(0,160)`,
 > set the *Name* to `sushiBasePiece`. Drag in *chopstick.png* and move it to the top-left side of the *sushiBasePiece*.
 > You want this *chopstick* to be part of our **Sushi Piece**, set *Parent* to `sushiBasePiece` and I would suggest a
 > position of around `(-92,37)`.  Set the *Name* to `leftChopstick`.
