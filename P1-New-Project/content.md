@@ -34,7 +34,7 @@ slug: new-spritekit-project
 SpriteKit is missing some useful functionality, thankfully we have bundled some together for you.  
 
 > [action]
-> Download the [MakeSchool Utilities](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift3/raw/master/Utils.zip), unpack the folder and add it to your project as you did with the art pack.
+> Download and add *[MSButtonNode.swift](../MSButtonNode.swift)* to your project. 
 >
 > Your project structure should hopefully look similar to this:
 >
