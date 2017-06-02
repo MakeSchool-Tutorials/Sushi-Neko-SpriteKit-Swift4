@@ -3,9 +3,10 @@ title: "Getting started with Sushi Neko!"
 slug: getting-started
 ---
 
-In this tutorial you will build Sushi Neko -- a clone of the popular mobile game [Timberman](https://itunes.apple.com/us/app/timberman/id871809581?mt=8). You will use Apple's Swift programming language together with SpriteKit, their game development framework.
+In this tutorial you will build Sushi Neko -- a clone of the popular mobile game [Timberman](https://itunes.apple.com/us/app/timberman/id871809581?mt=8). 
+You will use Apple's Swift programming language together with SpriteKit, their game development framework.
 
-#What you will learn
+# What you will learn
 
 Throughout this tutorial you will learn many concepts including how to:
 
@@ -16,7 +17,7 @@ Throughout this tutorial you will learn many concepts including how to:
 - Add simple visual effects
 - Implement game state management
 
-#The finished product
+# The finished product
 
 ![Sushi Neko gameplay](../Tutorial-Images/animated_gameplay.gif)
 
