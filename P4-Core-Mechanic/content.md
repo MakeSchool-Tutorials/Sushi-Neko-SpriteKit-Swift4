@@ -173,7 +173,7 @@ move 50 on the first update, 25 on the next, then 12.5, 6.25, 3.125, etc.
 func moveTowerDown() {
     var n: CGFloat = 0
     for piece in sushiTower {
-        let y = (n * 55) + 200
+        let y = (n * 55) + 215
         piece.position.y -= (piece.position.y - y) * 0.5
         n += 1
     }
