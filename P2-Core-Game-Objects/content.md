@@ -59,7 +59,24 @@ Now we need to add the right hand side chopstick. Can you do this?
 > ![Flip horizontally](../Tutorial-Images/xcode_spritekit_flip_horizontal.png)
 >
 
-##Sushi type
+## Working with GameScene
+
+The default project comes with a lot of extra code you don't need for this project. You will want to remove it
+before continuing. 
+
+> [action] 
+> Open GameScene.swift. Delete everything and replace it with: 
+> 
+```
+import SpriteKit
+
+class GameScene: SKScene {
+    
+}
+```
+>
+
+## Sushi type
 
 You will want to keep track of the type of sushi piece.
 An *Enumeration* would work well for the first job, knowing what *Side* the chopstick is on will come in handy later
@@ -77,7 +94,7 @@ enum Side {
 
 Next up you will create a custom sushi class called *SushiPiece*
 
-#The SushiPiece class
+# The SushiPiece class
 
 > [action]
 > Create a new *Swift* file (`File > New > File > Swift File`) and name it `SushiPiece.swift`.
