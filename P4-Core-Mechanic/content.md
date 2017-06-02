@@ -196,30 +196,11 @@ override func update(_ currentTime: TimeInterval) {
 ```
 >
 
----
-> [action]
-> Add the following code after the last block:
->
-```
-/* Drop all the sushi pieces down one place */
-for sushiPiece in sushiTower {
-   sushiPiece.run(SKAction.move(by: CGVector(dx: 0, dy: -55), duration: 0.10))
->    
-   /* Reduce zPosition to stop zPosition climbing over UI */
-   sushiPiece.zPosition -= 1
-}
-```
->
----
+Run the game... Should look a lot better now. Still needs work but the pieces are moving down!
 
-Run the game... Should look a lot better now.
+It would be good if sushi pieces flew off the screen to the right or left as the cat punched them. 
 
-You're applying a *moveBy* action to move every piece of sushi in the sushi tower down by `55` pixels. You're also
-decreasing the *Z-Position* of each piece.  If you recall every time a new piece is added the *Z-Position* is incremented,
-the problem here is as the position climbs it will eventually become higher than other visual elements such as our UI.  
-This way you keep the *Z-Position* of all the pieces in a manageable range.
-
-#Animating the sushi
+# Animating the sushi
 
 Time for you to add a bit of polish and create two new action animations.
 
@@ -280,7 +261,7 @@ animation is complete you want the sushi to be removed from the game.  Currently
 *removeFromParent()* to instantly remove the sushi, so the player will never see the anination.
 
 > [action]
-> Open *GameScene.swift* and replace the following inside `touchesBegan(...)`
+> Open *GameScene.swift* and replace the following inside `touchesBegan(_ touches:)`
 >
 ```
 firstPiece.removeFromParent()
@@ -298,7 +279,7 @@ Now run the game.... Flying sushi!
 
 ![Animated cat punches](../Tutorial-Images/animated_cat_punches.gif)
 
-#Summary
+# Summary
 
 Great job, you've achieved a lot in this chapter, the game's core mechanic is now in place.  You've learnt to:
 
