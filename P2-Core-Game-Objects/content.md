@@ -11,6 +11,8 @@ size to a iPhone resolution. The artwork was designed for iPhone 6 or 7, and sho
 > Click on
 > *Atrributes inspector* and set the *Size* to `(320,568)`
 >
+> Also, move the anchor point to the lower left by setting *Anchor* to `(0, 0)`.
+>
 > ![GameScene size](../Tutorial-Images/xcode_gamescene_size.png)
 >
 
@@ -39,7 +41,9 @@ Let's setup this master sushi piece.
 > [action]
 >
 > Drag in *roll.png* and place it in the center of the screen near the bottom. I would suggest around `(0,160)`,
-> set the *Name* to `sushiBasePiece`. Drag in *chopstick.png* and move it to the top-left side of the *sushiBasePiece*.
+> set the *Name* to `sushiBasePiece`. 
+> 
+> Drag in *chopstick.png* and move it to the top-left side of the *sushiBasePiece*.
 > You want this *chopstick* to be part of our **Sushi Piece**, set *Parent* to `sushiBasePiece` and I would suggest a
 > position of around `(-92,37)`.  Set the *Name* to `leftChopstick`.
 >
