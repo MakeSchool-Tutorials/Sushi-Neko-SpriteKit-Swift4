@@ -10,32 +10,41 @@ those sushi clean out of the sushi tower.
 You will be adding a simple touch mechanic to the game, if the player touches anywhere on the left/right hand side of the
 screen, the cat will be moved to the left/right side and then punch the first piece of sushi in the sushi tower.
 
-##Touch control
+## Touch control
 
 > [action]
-> Replace the `touchBegan(...)` method with the following:
+> Add the method: `touchesBegan(_ touches:)`. Inside the `GameScene` class start typing "touchesB" and Xcode will 
+> provide code hints, use this to help avoid mistakes. 
+> 
+```
+override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    
+}
+```
+>
+> Inside this method add the following: 
 >
 ```
 override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-   /* Called when a touch begins */
->   
-   /* We only need a single touch here */
-   let touch = touches.first!
->     
-   /* Get touch position in scene */
-   let location = touch.location(in: self)
->        
-   /* Was touch on left/right hand side of screen? */
-   if location.x > size.width / 2 {
-      character.side = .right
-   } else {
-      character.side = .left
-   }
+    /* Called when a touch begins */
+>    
+    /* We only need a single touch here */
+    let touch = touches.first!
+>    
+    /* Get touch position in scene */
+    let location = touch.location(in: self)
+>    
+    /* Was touch on left/right hand side of screen? */
+    if location.x > size.width / 2 {
+        character.side = .right
+    } else {
+        character.side = .left
+    }
 }
 ```
 >
 
-You are performing a simple check to decide which side of the screen was touched.  Remember the property observer *didSet*,
+You are performing a simple check to decide which side of the screen was touched. Remember the property observer *didSet*,
 that you setup in *Character.swift* (Take a quick look)? When you set the *side* property the cat will move set its position
 appropriately.
 
@@ -43,7 +52,7 @@ Run the game... You should have a working cat teleporter.
 
 ![Animated cat teleporter](../Tutorial-Images/animated_cat_teleporter.gif)
 
-#Cat knockout
+# Cat knockout
 
 Great, your cat can move, how about that punch?
 
@@ -52,7 +61,7 @@ You are going to create three animation actions to enable your cat to perform th
 - A frame animation sequence for the cat punch
 - A rotation/move sequence for the sushi in both left/right flavors
 
-##One Punch animation
+## One Punch animation
 
 > [action]
 > Open *GameScene.sks* and click on create new action in the timeline and name it `Punch`:
