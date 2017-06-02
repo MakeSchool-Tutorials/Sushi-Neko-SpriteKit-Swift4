@@ -23,7 +23,7 @@ var sushiTower: [SushiPiece] = []
 ```
 >
 
-##Adding sushi to the tower
+## Adding sushi to the tower
 
 You are going to be adding lots of sushi, so it would be nice to add a method to perform this repetitive task.
 
@@ -43,7 +43,8 @@ func addTowerPiece(side: Side) {
 >   
    /* Add on top of last piece, default on first piece */
    let lastPosition = lastPiece?.position ?? sushiBasePiece.position
-   newPiece.position = lastPosition + CGPoint(x: 0, y: 55)
+   newPiece.position.x = lastPosition.x
+   newPiece.position.y = lastPosition.y + 55
 >   
    /* Increment Z to ensure it's on top of the last piece, default on first piece*/
    let lastZPosition = lastPiece?.zPosition ?? sushiBasePiece.zPosition
@@ -64,11 +65,11 @@ func addTowerPiece(side: Side) {
 Have a read through the comments first...
 
 The first step is to copy the original **sushiBasePiece**, we could have created this as a seperate *SKS* file however
-given the frequent usage, performance will be better simply copying it.  To be able to copy an object it must conform to the
+given the frequent usage, performance will be better simply copying it. To be able to copy an object it must conform to the
 [NSCopying](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Protocols/NSCopying_Protocol/)
 protocol. *SKSpriteNode* is a subclass of *SKNode* which conforms and implements the *NSCopying* protocol.
 
-You want to stack each piece of sushi on top of the previous one.  There is one exception, the very first piece to be
+You want to stack each piece of sushi on top of the previous one. There is one exception, the very first piece to be
 added to the tower will not have a previous piece in the tower.  In this case you effectively use **sushiBasePiece** as the
 first piece.
 
@@ -80,18 +81,18 @@ chopstick.
 
 The *newPiece* is then added to the scene and also added to the *sushiTower* array with `append`.
 
-##Seeding the tower
+## Seeding the tower
 
 Before you move on top random generation, it would be a good idea to test this works and stack the tower with a couple of
 starting pieces. This way you can always guarantee the cat starts in a safe position.
 
 > [action]
-> Add the following to the end of `didMove(to:)`
+> Add the following to the end of `didMove(to view:)`
 >
 ```
 /* Manually stack the start of the tower */
-addTowerPiece(.none)
-addTowerPiece(.right)
+addTowerPiece(side: .none)
+addTowerPiece(side: .right)
 ```
 >
 
@@ -101,11 +102,11 @@ Run the game... You should hopefully see the start of your tower with the pieces
 
 Time to stack the sushi and create that random element.
 
-#Random sushi generator
+# Random sushi generator
 
 If you added the sushi using a true RNG (Random Number Generator) with a value of `.none, .left, .right`, it would most
-likely become problematic very quickly.  If you create a `.left` piece followed by a `.right` piece, there is nowhere for
-the cat to go and death will be unavoidable.  Which isn't much fun for the player.
+likely become problematic very quickly. If you create a `.left` piece followed by a `.right` piece, there is nowhere for
+the cat to go and death will be unavoidable. Which isn't much fun for the player.
 
 You want to create a Fun-RNG, take a RNG and add some logic on to make the output fun and appropriate for your game.
 
@@ -127,12 +128,12 @@ func addRandomPieces(total: Int) {
       } else {
 >      
          /* Random Number Generator */
-         let rand = CGFloat.random(min: 0, max: 1.0)
+         let rand = arc4random_uniform(100)
 >          
-         if rand < 0.45 {
+         if rand < 45 {
             /* 45% Chance of a left piece */
             addTowerPiece(.left)
-         } else if rand < 0.9 {
+         } else if rand < 90 {
             /* 45% Chance of a right piece */
             addTowerPiece(.right)
          } else {
@@ -146,24 +147,24 @@ func addRandomPieces(total: Int) {
 >
 
 It's handy to be able to specify the number of pieces to add at one time, again you need access to the last sushi
-piece added as it will help you make a decision on what piece should go next.  Remember that you seeded the stack with a few
+piece added as it will help you make a decision on what piece should go next. Remember that you seeded the stack with a few
 manual pieces so there will always be some sushi in the tower.
 
-The *random* function is called to generate a *CGFloat* between `0` and `1`, think of it as the equivalent of rolling a
-number between 0 and 100. You can then take that value and check it against your game chance weights, in this case if it's
-under `0.45` e.g. You want to assign a weight with 45% chance of this event happening. Then a `.left` sushi will be produced
-and added to the tower.
+The `arc4random_uniform(n)` returns a random number from `0` to `n - 1`. Our logic above looks at the value returned and 
+generates sushi piece with chopsticks on the left if the number is less than (`<`) 45, if the number is 45 or greater and 
+less than 90 it generates a piece with the chopsticks on the right, if the number is 90 or greater the piece has no 
+chopsticks. 
 
-##Stocking the sushi tower
+## Stocking the sushi tower
 
 Why don't you try out this method and add `10` new sushi pieces to the tower.
 
 > [solution]
-> Add the following code to the end of `didMove(to:)`
+> Add the following code to the end of `didMove(to view:)`
 >
 ```
 /* Randomize tower to just outside of the screen */
-addRandomPieces(10)
+addRandomPieces(total: 10)
 ```
 >
 
@@ -171,7 +172,7 @@ Run the game, it should look something like this, just slightly different :]
 
 ![Screenshot Sushi Tower Stacked](../Tutorial-Images/screenshot_sushi_tower_stacked.png)
 
-#Summary
+# Summary
 
 You're making real progress, the sushi tower is the heart of this game mechanic.  
 
