@@ -6,6 +6,17 @@ slug: core-game-objects
 For Sushi Neko you will be using the default portrait orientation. You will need to modify the *GameScene.sks* scene
 size to a iPhone resolution. The artwork was designed for iPhone 6 or 7, and should work for most other screen sizes.
 
+## Set the Game to Portrait
+
+This game will run in protrait mode only. 
+
+> [action]
+> Select your project file, should be the first item in the project navigator on the left side. Under the general 
+> tab uncheck everything except "Portrait" under Deployment Info > Device Orientation. 
+> 
+
+## Setting up GameScene.sks
+
 > [action]
 > Open *GameScene.sks*, delete any default objects. `Zoom Out` until you can see the yellow bounding box of the scene. 
 > Click on
@@ -138,7 +149,7 @@ Run the game, you should expect to see the scene as it is in the editor.
 
 Looking good, time for you to connect the chopsticks.
 
-##Connecting chopsticks
+## Connecting chopsticks
 
 Let's setup a function to handle this.
 
@@ -149,8 +160,10 @@ Let's setup a function to handle this.
 func connectChopsticks() {
   /* Connect our child chopstick nodes */
 >
-  rightChopstick = childNodeWithName("rightChopstick") as! SKSpriteNode
-  leftChopstick = childNodeWithName("leftChopstick") as! SKSpriteNode
+  func connectChopsticks() {
+    /* Connect our child chopstick nodes */
+    rightChopstick = childNode(withName: "rightChopstick") as! SKSpriteNode
+    leftChopstick = childNode(withName: "leftChopstick") as! SKSpriteNode
 }
 ```
 >
@@ -167,23 +180,24 @@ var side: Side = .none {
         switch side {
         case .left:
             /* Show left chopstick */
-            leftChopstick.hidden = false
+            leftChopstick.isHidden = false
         case .right:
             /* Show right chopstick */
-            rightChopstick.hidden = false
+            rightChopstick.isHidden = false
         case .none:
             /* Hide all chopsticks */
-            leftChopstick.hidden = true
-            rightChopstick.hidden = true
+            leftChopstick.isHidden = true
+            rightChopstick.isHidden = true
         }
     }
 }
 ```
 >
 
-##Property observation
+## Property observation
 
-You now have a *Side* property to keep track of the sushi type, using your previously defined Enumeration type. You can make use of the *didSet* property observer to ensure the chopsticks are correctly setup as shown.
+You now have a *Side* property to keep track of the sushi type, using your previously defined Enumeration type. You can 
+make use of the *didSet* property observer to ensure the chopsticks are correctly setup as shown.
 
 > [action]
 > Add the following to the end of the *connectChopsticks* method:
@@ -196,7 +210,7 @@ side = .none
 
 The default *side* will be set to `.none`, you're not quite ready to run the game yet. You need to connect the **sushiBasePiece** into our *GameScene.swift*
 
-#Connecting the sushi
+# Connecting the sushi
 
 Time to connect the **sushiBasePiece**.
 
@@ -209,22 +223,40 @@ var sushiBasePiece: SushiPiece!
 ```
 >
 
-> Next create the code connection in `didMove(to:)`
+## Initializing the Scene with didMove(to view:)
+
+The `didMove(to View:)` method is called when the scene appears on the screen. This is a great place to initialize 
+your game. 
+
+> Next add `didMove(to view:)`. Tip! If you start typing "didMove" Xcode will show a menu with code options. 
+> When you see "didMove(to view: SKView)" press the Return key and Xcode will type the rest of the function
+> for you. 
 >
 ```
-/* Connect game objects */
-sushiBasePiece = childNodeWithName("sushiBasePiece") as! SushiPiece
+override func didMove(to view: SKView) {
+    super.didMove(to: view)
+>
+}
 ```
 >
 
-##Connecting the chopsticks
+> Next next add th following to `didMove(to view:)`. This creates a reference to the `sushioBasePiece` you created in 
+> *GameScene.sks*.
+>
+```
+/* Connect game objects */
+sushiBasePiece = childNode(withName: "sushiBasePiece") as! SushiPiece
+```
+>
+
+## Connecting the chopsticks
 
 You need to ensure the *connectChopsticks* method is called. A good place to add this would be after the
 **sushiBasePiece** code connection.
 
 > [action]
 > Open *GameScene.swift* and add a call to this method anywhere after the **sushiBasePiece** code connection
-> in `didMove(to:)`
+> in `didMove(to view:)`
 >
 ```
 /* Setup chopstick connections */
@@ -238,18 +270,18 @@ Run the game, it should now look like this:
 
 Awesome, let's add the heroic feline.
 
-#Adding the cat
+# Adding the cat
 
 Time for your feline friend to enter the fray.
 
 > [action]
-> Drag in *character.png* and place it in on the left side of the sushi, set the *Z Position* to `1`.  
+> Open *GameScene.sks*, drag in *character.png* and place it in on the left side of the sushi, set the *Z Position* to `1`.  
 > A *Position* of `(70,165)` looks pretty good.  Set *Name* to `character` and *Custom Class* to `Character`.
 
 You may have noticed you don't have a *Character* class yet, let's create one. It's similar to the *SushiPiece* in
 that you will want to track the *side* of the cat.
 
-##The Character class
+## The Character class
 
 > [action]
 > Create a new *Swift* file (`File > New > File > Swift File`) and name it `Character.swift`.
@@ -297,15 +329,16 @@ just don't forget the name of this class :]
 > Open *GameScene.swift* and add the following property to the class.
 >
 ```
+/* Cat Character */
 var character: Character!
 ```
 >
 
-> Next create the code connection in `didMove(to:)`
+> Next create the code connection in `didMove(to view:)`
 >
 ```
 /* Connect game objects */
-character = childNodeWithName("character") as! Character
+character = childNode(withName: "character") as! Character
 ```
 >
 
@@ -313,7 +346,7 @@ Run the game, always good to frequently check everything is working after adding
 
 ![Screenshot Sushi Cat](../Tutorial-Images/screenshot_cat_sushi_basic.png)
 
-#Summary
+# Summary
 
 Great, you've learnt to:
 
