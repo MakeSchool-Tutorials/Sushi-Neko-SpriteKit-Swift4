@@ -3,26 +3,29 @@ title: Turning a mechanic into a game
 slug: gameplay
 ---
 
-What is the difference between a game mechanic and a game? You've built the core game mechanic yet on its own this is not very satisfying for the player.  You need to wrap it up now into a game, the best advice is always, keep it simple!
+What is the difference between a game mechanic and a game? You've built the core game mechanic yet on its own this is 
+not very satisfying for the player.  You need to wrap it up now into a game, the best advice is always, keep it simple!
 
 - What is the challenge for the player?
 - How can you show the player progression?
 - What UI elements are needed?
 - Tracking the gamestate
 
-##The challenge
+## The challenge
 
-How to challenge the player? You will be adding a health bar that will progressively decrease as time goes on.  The player can refresh their health with every successful sushi piece knockout.
+How to challenge the player? You will be adding a health bar that will progressively decrease as time goes on. 
+The player can refresh their health with every successful sushi piece knockout.
 
-##The progression
+## The progression
 
-The classic indicator of progression is to introduce a scoring element.  You will add a score counter for every sushi piece knocked out.
+The classic indicator of progression is to introduce a scoring element.  You will add a score counter for every 
+sushi piece knocked out.
 
-##The User Interface
+## The User Interface
 
 Let's keep it simple to start with and add a Play button that will also serve as the restart button upon the player's death.
 
-#GameState management
+# GameState management
 
 As it stands we have no idea what state the game is in, before we introduce additional elements we need to know what
 state the game is in.  Are we waiting for the player to press play? Is the game in progress? Did the player just die?
@@ -52,7 +55,7 @@ var state: GameState = .title
 ```
 >
 
-##Play button
+## Play button
 
 When should you change the GameState change from `.title` to `.ready`? Let's add a play button.
 
@@ -64,7 +67,8 @@ When should you change the GameState change from `.title` to `.ready`? Let's add
 
 > [info]
 > SpriteKit does not come with an easy way to make buttons so we created a basic button class called *MSButtonNode* for you.
-> Feel free to explore this class if you've not comes across it before, it's in the **Utils** folder in the *Project Navigator*.  The *MSButtonNode* class is explored in greater detail in the *Hoppy Bunny Tutorial*
+> Feel free to explore this class if you've not comes across it before, it's in the **Utils** folder in the *Project
+> Navigator*.  The *MSButtonNode* class is explored in greater detail in the *Hoppy Bunny Tutorial*
 >
 
 Next you need to code connect the *playButton* to the **GameScene** class, see if you can do this yourself.
@@ -80,19 +84,18 @@ var playButton: MSButtonNode!
 >
 ```
 /* UI game objects */
-playButton = childNodeWithName("playButton") as! MSButtonNode
+playButton = childNode(withName: "playButton") as! MSButtonNode
 ```
 >
 
 Now the button is connected you need to add some code to execute when the button is touched.
 
 > [action]
-> Add the following code to `didMove(to:)`
+> Add the following code to `didMove(to view:)`
 >
 ```
 /* Setup play button selection handler */
 playButton.selectedHandler = {
->
     /* Start game */
     self.state = .ready
 }
@@ -103,7 +106,7 @@ Great, now you are changing the game state state, yet on it's own it doesn't mea
 to enable/disable various elements of the game.  You don't want the cat to be able to move until the game is in a
 `.ready` state.
 
-##Disabling touch
+## Disabling touch
 
 > [action]
 > Add the following code to the top of `touchesBegan(...)`:
@@ -126,21 +129,21 @@ we don't want the game to begin until that first screen touch by the player.
 
 Run the game... Hopefully you can't control the cat until you've hit the play button first :]
 
-#Game Over
+# Game Over
 
 You added a `.gameOver` state, so let's look at the ways the player can die:
 
 - The player gets hit by a chopstick
 - The player runs out of health
 
-##Death by chopstick
+## Death by chopstick
 
 If the player doesn't dodge the chopsticks they should die, there is no need for any advanced collision detection.  
 You will want to check the *side* of the first piece of sushi against the *side* of the cat.  If they are the same then
 the player has been hit and Game over.
 
 > [action]
-> Add the following code in `touchesBegan(...)` after setting character.side:
+> Add the following code in `touchesBegan(_ touches:)` after setting `character.side`:
 >
 ```
 /* Grab sushi piece on top of the base sushi piece, it will always be 'first' */
@@ -170,7 +173,7 @@ same method twice.
 > [challenge]
 > Why don't you refactor this code into a new method?
 
-##Adding the gameover method
+## Adding the gameover method
 
 Now you need to add a *gameOver* method, you will want to:
 
@@ -192,20 +195,22 @@ func gameOver() {
         sushiPiece.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
     }
 >    
-    /* Make the player turn red */
-    character.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
+        /* Make the player turn red */
+        character.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
 >    
-    /* Change play button selection handler */
-    playButton.selectedHandler = {
->        
+        /* Change play button selection handler */
+        playButton.selectedHandler = {
+>            
         /* Grab reference to the SpriteKit view */
         let skView = self.view as SKView!
->        
+>            
         /* Load Game scene */
-        let scene = GameScene(fileNamed:"GameScene") as GameScene!
->        
+        guard let scene = GameScene(fileNamed:"GameScene") as GameScene! else {
+            return
+        }
+>            
         /* Ensure correct aspect mode */
-        scene?.scaleMode = .aspectFill
+        scene.scaleMode = .aspectFill
 >        
         /* Restart GameScene */
         skView?.presentScene(scene)
@@ -224,7 +229,7 @@ Run the game... It should look like this.
 
 ![Animated game over](../Tutorial-Images/animated_cat_death.gif)
 
-#Summary
+# Summary
 
 Great progress, you now have a functional game!
 

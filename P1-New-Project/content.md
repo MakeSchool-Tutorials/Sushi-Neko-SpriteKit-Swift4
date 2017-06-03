@@ -10,10 +10,11 @@ slug: new-spritekit-project
 >
 > ![Xcode new project](../Tutorial-Images/xcode_new_project-2.png)
 
-##Importing Resources
+## Importing Resources
 
 > [action]
-> Download the [Sushi Neko Art Pack](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift3/raw/master/assets.atlas.zip) we created for you.
+> Download the [Sushi Neko Art Pack](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift3/raw/master/assets.atlas.zip) 
+> we created for you.
 > Once the download is complete, unpack the folder and add it to your project.
 > Ensure you have *Copy items if needed* and *Create groups*.
 > ![Xcode file import options](../Tutorial-Images/xcode_adding_files_flags.png)
@@ -22,22 +23,23 @@ slug: new-spritekit-project
 <!-- -->
 
 > [action]
-> Download the [SFX Starter Kit](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift3/raw/master/SFX.zip) we made for you. Once the download is complete, unpack the folder and add to the project.
+> Download the [SFX Starter Kit](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift3/raw/master/SFX.zip) 
+> we made for you. Once the download is complete, unpack the folder and add to the project.
 > Ensure you have *Copy items if needed* and *Create groups*.
 > ![Xcode file import options](../Tutorial-Images/xcode_adding_files_flags.png)
 >
 
-##Adding extra functionality
+## Adding extra functionality
 
 SpriteKit is missing some useful functionality, thankfully we have bundled some together for you.  
 
 > [action]
-> Download the [MakeSchool Utilities](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift3/raw/master/Utils.zip), unpack the folder and add it to your project as you did with the art pack.
+> Download and add *[MSButtonNode.swift](../MSButtonNode.swift)* to your project. 
 >
 > Your project structure should hopefully look similar to this:
 >
 ![Xcode project structure](../Tutorial-Images/xcode_project_structure_new.png)
 
-#Summary
+# Summary
 
 Great, you now have everything in place to get started building your game.
