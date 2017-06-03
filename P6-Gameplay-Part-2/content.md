@@ -12,6 +12,7 @@ The health bar comprises of two assets, the *life_bg.png* background and the *li
 > [action]
 > Open *GameScene.sks* and drag *life_bg.png* to the center of the scene and near the top.
 > Set the *Z Position* to `100`, you want this to be high due to the sushi pieces.
+>
 > Drag *life.png* into the center of the the bar, set the *Z-Position* to `101` and *Name* to `healthBar`
 >
 
@@ -19,8 +20,9 @@ How do you think you could gracefully decrease the health bar?
 
 # Scaling the bar
 
-There is a really nice way to create the effect of a bar gradually decreasing in size.  You can scale it.  However, if you
-try to scale it right now in the scene editor it will scale in a uniform manner, decreasing in size on all sides.  This is due to the *Anchor Point* being set to `(0.5,0.5)`.
+There is a really nice way to create the effect of a bar gradually decreasing in size.  You can scale it. However, if you
+try to scale it right now in the scene editor it will scale in a uniform manner, decreasing in size on all sides. 
+This is due to the *Anchor Point* being set to `(0.5,0.5)`.
 
 > [action]
 > Change the *Anchor Point* of the *healthBar* to the bottom-left `(0,0)`, you may have to reposition it back into place
@@ -39,14 +41,15 @@ var healthBar: SKSpriteNode!
 ```
 >
 
-> Next, add this code to `didMove(to:)`
+> Next, add this code to `didMove(to view:)`
 >
 ```
-healthBar = childNodeWithName("healthBar") as! SKSpriteNode
+healthBar = childNode(withName: "healthBar") as! SKSpriteNode
 ```
 >
 
-Great you now have access to the *healthBar* object.  However, you will want to use another property to track the players health and use this value to update the bar visually.
+Great you now have access to the *healthBar* object.  However, you will want to use another property to track the players
+health and use this value to update the bar visually.
 
 # Health counter
 
@@ -70,21 +73,21 @@ You want the player to feel pressured by time, the longer they take to act the m
 they should gain health.  The trick is getting the balance right between loss and gain, something you can tweak yourself
 from player feedback :]
 
-A great place to add a steady decline would be in the `update(..)` method.
+A great place to add a steady decline would be in the `update(_ currentTime:)` method.
 
 > [action]
-> Replace the existing `update(...)` method with:
+> Add the following to the existing `update(_ currentTime:)` method:
 >
 ```
-override func update(_ currentTime: TimeInterval) {
-  /* Called before each frame is rendered */
-  if state != .playing { return }
->    
-  /* Decrease Health */
-  health -= 0.01
->    
-  /* Has the player ran out of health? */
-  if health < 0 { gameOver() }
+/* Called before each frame is rendered */
+if state != .playing {
+    return
+}
+/* Decrease Health */
+health -= 0.01
+/* Has the player ran out of health? */
+if health < 0 {
+    gameOver()
 }
 ```
 >
@@ -99,7 +102,7 @@ Run the game... The health bar should tick down and you eventually die and there
 To counter balance this decline you should give the player health every time they successfully punch the sushi.
 
 > [action]
-> After the collision check in `touchesBegan(...)` add:
+> After the collision check in `touchesBegan(_ touches:)` add:
 >
 ```
 /* Increment Health */
@@ -126,22 +129,20 @@ if health > 1.0 { health = 1.0 }
 
 Run the game again... Excellent
 
-#Adding the score
+# Adding the score
 
 Adding the score is very similar to adding health.  You will need to add a *SKLabel* to the *GameScene* to display the
 player's score in the scene and also a counter property to track the score and use this value to refresh the label.
 
 > [action]
-<<<<<<< HEAD
-> Open *GameScene.sks* and drag across a *Label* from the *Object Library*. If you're having problems selecting the label to move it once it's in the scene,  you can also use the **Arrow Keys**, **Hold Shift** to move it in larger steps. You can of course set the *Position* to something like `(160,340)`
-=======
-> Open *GameScene.sks* and drag across a *Label* from the *Object Library*, if you're having problems selecting the label
-> to move it once it's in the scene.  You can also use the **Arrow Keys**, **Hold Shift** to move it in larger steps. You
-> can of course set the *Position* to something like `(160,340)`
->>>>>>> 347f06d09b8b1276f9bf26454670e407365b2215
+> Open *GameScene.sks* and drag across a *Label* from the *Object Library*.
+> can of course set the *Position* to something like `(160,340)`.
+>
 > Set the *Name* to `scoreLabel` and change the *Font* to something you like.
 > ![Score font selection](../Tutorial-Images/xcode_screenshot_font_selection.png)
 > Set the *Text* to `0` and set the *Z-Position* to `100`
+>
+> Set the font and the size of the label to something bold that will be easy to read. 
 >
 
 Next code connect the *scoreLabel*, see if you can do this one yourself.
@@ -154,10 +155,10 @@ var scoreLabel: SKLabelNode!
 ```
 >
 
-> Then connect it in `didMove(to:)`:
+> Then connect it in `didMove(to view:)`:
 >
 ```
-scoreLabel = childNodeWithName("scoreLabel") as! SKLabelNode
+scoreLabel = childNode(withName: "scoreLabel") as! SKLabelNode
 ```
 >
 
@@ -181,16 +182,9 @@ When the score value changes the *text* property of the *scoreLabel* is updated 
 Time to give the player some points.
 
 > [action]
-<<<<<<< HEAD
-> Add the following code to `touchesBegan(...)` after:
-=======
-> Add the following code in touchesBegan(...) after:
->>>>>>> 347f06d09b8b1276f9bf26454670e407365b2215
+> Add the following code in touchesBegan(_ touches:) after: `health += 0.1`
 >
 ```
-/* Increment Health */
-health += 0.1
->
 /* Increment Score */
 score += 1
 ```
@@ -200,7 +194,7 @@ Run the game...  Congratulations, you should now have a fully functional game!
 
 ![Animated MVP](../Tutorial-Images/animated_game_mvp.gif)
 
-#Summary
+# Summary
 
 Congratulations you've completed *Sushi Neko*, give the person next to you a high five.
 
