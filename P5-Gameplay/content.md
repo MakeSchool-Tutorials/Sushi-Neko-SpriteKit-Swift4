@@ -195,20 +195,22 @@ func gameOver() {
         sushiPiece.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
     }
 >    
-    /* Make the player turn red */
-    character.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
+        /* Make the player turn red */
+        character.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
 >    
-    /* Change play button selection handler */
-    playButton.selectedHandler = {
->        
+        /* Change play button selection handler */
+        playButton.selectedHandler = {
+>            
         /* Grab reference to the SpriteKit view */
         let skView = self.view as SKView!
->        
+>            
         /* Load Game scene */
-        let scene = GameScene(fileNamed:"GameScene") as GameScene!
->        
+        guard let scene = GameScene(fileNamed:"GameScene") as GameScene! else {
+            return
+        }
+>            
         /* Ensure correct aspect mode */
-        scene?.scaleMode = .aspectFill
+        scene.scaleMode = .aspectFill
 >        
         /* Restart GameScene */
         skView?.presentScene(scene)
