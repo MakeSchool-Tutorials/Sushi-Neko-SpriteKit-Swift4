@@ -169,6 +169,7 @@ move 50 on the first update, 25 on the next, then 12.5, 6.25, 3.125, etc.
 
 > [action]
 > Add a new method to `GameScene` to handle moving the tower down.
+>
 ```
 func moveTowerDown() {
     var n: CGFloat = 0
