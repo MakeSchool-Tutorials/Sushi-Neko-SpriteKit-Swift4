@@ -45,7 +45,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 >
 
 You are performing a simple check to decide which side of the screen was touched. Remember the property observer *didSet*,
-that you setup in *Character.swift* (Take a quick look)? When you set the *side* property the cat will move set its position
+that you setup in *Character.swift* (Take a quick look)? When you set the *side* property the cat will move and set its position
 appropriately.
 
 Run the game... You should have a working cat teleporter.
@@ -162,7 +162,7 @@ better if the remaining sushi would drop down a position. Let's add this.
 
 ## Moving the tower
 
-To move the tower down you'll loop through the array of shushi pieces and move each piece to a y position of it's position
+To move the tower down you'll loop through the array of sushi pieces and move each piece to a y position of it's position
 in the array times `55` which is the height of the piece. Instead of moving directly to this position you'll figure the
 distance to move and move 50% of the distance. if we do this each frame, if the distance was 100 pixels, the piece would
 move 50 on the first update, 25 on the next, then 12.5, 6.25, 3.125, etc.  
