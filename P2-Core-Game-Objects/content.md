@@ -8,17 +8,17 @@ size to a iPhone resolution. The artwork was designed for iPhone 6 or 7, and sho
 
 ## Set the Game to Portrait
 
-This game will run in protrait mode only. 
+This game will run in protrait mode only.
 
 > [action]
-> Select your project file, should be the first item in the project navigator on the left side. Under the general 
-> tab uncheck everything except "Portrait" under Deployment Info > Device Orientation. 
-> 
+> Select your project file, should be the first item in the project navigator on the left side. Under the general
+> tab uncheck everything except "Portrait" under Deployment Info > Device Orientation.
+>
 
 ## Setting up GameScene.sks
 
 > [action]
-> Open *GameScene.sks*, delete any default objects. `Zoom Out` until you can see the yellow bounding box of the scene. 
+> Open *GameScene.sks*, delete any default objects. `Zoom Out` until you can see the yellow bounding box of the scene.
 > Click on
 > *Atrributes inspector* and set the *Size* to `(320,568)`
 >
@@ -37,8 +37,8 @@ It's nice to work with a backdrop, so let's add this before working on the core 
 
 # Creating Sushi
 
-Sushi is a key ingredient in the game mechanic, you will use it to build a sushi tower. To create the tower you will 
-be randomly stacking sushi, before you can stack the tower you need to build a core piece of sushi.  This master piece 
+Sushi is a key ingredient in the game mechanic, you will use it to build a sushi tower. To create the tower you will
+be randomly stacking sushi, before you can stack the tower you need to build a core piece of sushi.  This master piece
 will contain two chopsticks, one on the left and one on the right.  
 
 This will enable 3 possible sushi pieces:
@@ -52,8 +52,8 @@ Let's setup this master sushi piece.
 > [action]
 >
 > Drag in *roll.png* and place it in the center of the screen near the bottom. I would suggest around `(0,160)`,
-> set the *Name* to `sushiBasePiece`. 
-> 
+> set the *Name* to `sushiBasePiece`.
+>
 > Drag in *chopstick.png* and move it to the top-left side of the *sushiBasePiece*.
 > You want this *chopstick* to be part of our **Sushi Piece**, set *Parent* to `sushiBasePiece` and I would suggest a
 > position of around `(-92,37)`.  Set the *Name* to `leftChopstick`.
@@ -73,16 +73,16 @@ Now we need to add the right hand side chopstick. Can you do this?
 ## Working with GameScene
 
 The default project comes with a lot of extra code you don't need for this project. You will want to remove it
-before continuing. 
+before continuing.
 
-> [action] 
-> Open GameScene.swift. Delete everything and replace it with: 
-> 
+> [action]
+> Open GameScene.swift. Delete everything and replace it with:
+>
 ```
 import SpriteKit
-
+>
 class GameScene: SKScene {
-    
+>
 }
 ```
 >
@@ -196,7 +196,7 @@ var side: Side = .none {
 
 ## Property observation
 
-You now have a *Side* property to keep track of the sushi type, using your previously defined Enumeration type. You can 
+You now have a *Side* property to keep track of the sushi type, using your previously defined Enumeration type. You can
 make use of the *didSet* property observer to ensure the chopsticks are correctly setup as shown.
 
 > [action]
@@ -225,12 +225,12 @@ var sushiBasePiece: SushiPiece!
 
 ## Initializing the Scene with didMove(to view:)
 
-The `didMove(to View:)` method is called when the scene appears on the screen. This is a great place to initialize 
-your game. 
+The `didMove(to View:)` method is called when the scene appears on the screen. This is a great place to initialize
+your game.
 
-> Next add `didMove(to view:)`. Tip! If you start typing "didMove" Xcode will show a menu with code options. 
+> Next add `didMove(to view:)`. Tip! If you start typing "didMove" Xcode will show a menu with code options.
 > When you see "didMove(to view: SKView)" press the Return key and Xcode will type the rest of the function
-> for you. 
+> for you.
 >
 ```
 override func didMove(to view: SKView) {
@@ -239,8 +239,8 @@ override func didMove(to view: SKView) {
 }
 ```
 >
-
-> Next next add th following to `didMove(to view:)`. This creates a reference to the `sushioBasePiece` you created in 
+>
+> Next next add th following to `didMove(to view:)`. This creates a reference to the `sushioBasePiece` you created in
 > *GameScene.sks*.
 >
 ```

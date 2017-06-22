@@ -13,16 +13,16 @@ screen, the cat will be moved to the left/right side and then punch the first pi
 ## Touch control
 
 > [action]
-> Add the method: `touchesBegan(_ touches:)`. Inside the `GameScene` class start typing "touchesB" and Xcode will 
-> provide code hints, use this to help avoid mistakes. 
-> 
+> Add the method: `touchesBegan(_ touches:)`. Inside the `GameScene` class start typing "touchesB" and Xcode will
+> provide code hints, use this to help avoid mistakes.
+>
 ```
 override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    
+>
 }
 ```
 >
-> Inside this method add the following: 
+> Inside this method add the following:
 >
 ```
 override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -150,7 +150,7 @@ if let firstPiece = sushiTower.first as SushiPiece! {
     /* Remove from sushi tower array */
     sushiTower.removeFirst()
     firstPiece.removeFromParent()
-    
+>
     /* Add a new sushi piece to the top of the sushi tower */
     addRandomPieces(total: 1)
 }
@@ -163,8 +163,8 @@ better if the remaining sushi would drop down a position. Let's add this.
 ## Moving the tower
 
 To move the tower down you'll loop through the array of shushi pieces and move each piece to a y position of it's position
-in the array times `55` which is the height of the piece. Instead of moving directly to this position you'll figure the 
-distance to move and move 50% of the distance. if we do this each frame, if the distance was 100 pixels, the piece would 
+in the array times `55` which is the height of the piece. Instead of moving directly to this position you'll figure the
+distance to move and move 50% of the distance. if we do this each frame, if the distance was 100 pixels, the piece would
 move 50 on the first update, 25 on the next, then 12.5, 6.25, 3.125, etc.  
 
 > [action]
@@ -181,13 +181,13 @@ func moveTowerDown() {
 ```
 >
 
-You'll use the scene's `update(_ currentTime:)` method to move the pieces down. This method is called 60 times per second. 
+You'll use the scene's `update(_ currentTime:)` method to move the pieces down. This method is called 60 times per second.
 It's used for animating and updating game objects (`SKSpriteNodes` mostly) on the screen. If we call `moveTowerDown()`
-with `update(_ currentTime:)` the sushi tower will always move down as pieces are removed. 
+with `update(_ currentTime:)` the sushi tower will always move down as pieces are removed.
 
-> [action] 
+> [action]
 > Add `update(_ currentTime:)` inside `GameScene` start typing "update" wait for Xcode to show the method you want
-> in the code hints. Then choose it and add `moveTowerDown()`. 
+> in the code hints. Then choose it and add `moveTowerDown()`.
 >
 ```
 override func update(_ currentTime: TimeInterval) {
@@ -198,7 +198,7 @@ override func update(_ currentTime: TimeInterval) {
 
 Run the game... Should look a lot better now. Still needs work but the pieces are moving down!
 
-It would be good if sushi pieces flew off the screen to the right or left as the cat punched them. 
+It would be good if sushi pieces flew off the screen to the right or left as the cat punched them.
 
 # Animating the sushi
 
