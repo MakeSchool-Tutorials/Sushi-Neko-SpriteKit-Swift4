@@ -136,7 +136,7 @@ addRandomPieces(total: 1)
 ```
 >
 
-Run the game.... Well nothing much happens, this is because you are managing the sushi tower array correctly.  However, you
+Run the game.... Well nothing much happens, this is because you are managing the sushi tower array correctly but, you
 are not removing the sushi visually from the scene.  
 
 ## Improving the cycle
@@ -146,7 +146,7 @@ are not removing the sushi visually from the scene.
 >
 ```
 /* Grab sushi piece on top of the base sushi piece, it will always be 'first' */
-if let firstPiece = sushiTower.first as SushiPiece! {
+if let firstPiece = sushiTower.first as! SushiPiece {
     /* Remove from sushi tower array */
     sushiTower.removeFirst()
     firstPiece.removeFromParent()

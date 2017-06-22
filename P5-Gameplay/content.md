@@ -141,19 +141,14 @@ You will want to check the *side* of the first piece of sushi against the *side*
 the player has been hit and Game over.
 
 > [action]
-> Add the following code in `touchesBegan(_ touches:)` after setting `character.side`:
+> Add the following code in `touchesBegan(_ touches:)`, at the beginning of your `if let firstPiece = sushiTower.first as! SushiPiece` statement:
 >
 ```
-/* Grab sushi piece on top of the base sushi piece, it will always be 'first' */
-let firstPiece = sushiTower.first as! SushiPiece
->
 /* Check character side against sushi piece side (this is our death collision check)*/
 if character.side == firstPiece.side {
 >        
     /* Drop all the sushi pieces down a place (visually) */
-    for sushiPiece in sushiTower {
-        sushiPiece.run(SKAction.move(by: CGVector(dx: 0, dy: -55), duration: 0.10))
-    }
+    moveTowerDown()
 >        
     gameOver()
 >        
@@ -161,14 +156,28 @@ if character.side == firstPiece.side {
     return
 }
 ```
+>
+Remove the call to `moveTowerDown()` from update.
+>
+Add a new call to `moveTowerDown()` to the end of the `for touch in touches` loop in `touchesBegan`.
+>
+### Animating the tower move
+>
+Replace the contents of `moveTowerDown()` with:
+>
+```
+for sushiPiece in sushiTower {
+    sushiPiece.run(SKAction.move(by: CGVector(dx: 0, dy: -55), duration: 0.10))
+}
+```
 
-That was a cheap and easy collision check, you may have noticed the visual sushi tower drop code is being used in the
-same method twice.
+<!--  -->
 
-> [challenge]
-> Why don't you refactor this code into a new method?
+> [info]
+>
+You will not be able to run the game yet since you have not implemented gameOver!
 
-## Adding the gameover method
+## Adding the gameOver method
 
 Now you need to add a *gameOver* method, you will want to:
 
