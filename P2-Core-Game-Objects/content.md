@@ -18,7 +18,7 @@ This game will run in protrait mode only.
 ## Setting up GameScene.sks
 
 > [action]
-> Open *GameScene.sks*, delete any default objects. `Zoom Out` until you can see the yellow bounding box of the scene.
+> Open *GameScene.sks*, delete any default objects. `Zoom Out` until you can see the white bounding box of the scene.
 > Click on
 > *Atrributes inspector* and set the *Size* to `(320,568)`
 >
@@ -225,6 +225,8 @@ var sushiBasePiece: SushiPiece!
 The `didMove(to View:)` method is called when the scene appears on the screen. This is a great place to initialize
 your game.
 
+> [action]
+>
 > Next add `didMove(to view:)`. Tip! If you start typing "didMove" Xcode will show a menu with code options.
 > When you see "didMove(to view: SKView)" press the Return key and Xcode will type the rest of the function
 > for you.
@@ -232,19 +234,17 @@ your game.
 ```
 override func didMove(to view: SKView) {
     super.didMove(to: view)
->
 }
 ```
 >
 >
-> Next next add th following to `didMove(to view:)`. This creates a reference to the `sushioBasePiece` you created in
+> Next next add the following to `didMove(to view:)`. This creates a reference to the `sushioBasePiece` you created in
 > *GameScene.sks*.
 >
 ```
 /* Connect game objects */
 sushiBasePiece = childNode(withName: "sushiBasePiece") as! SushiPiece
 ```
->
 
 ## Connecting the chopsticks
 
