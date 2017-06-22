@@ -175,7 +175,7 @@ for sushiPiece in sushiTower {
 
 > [info]
 >
-You will not be able to run the game yet since you have not implemented gameOver!
+You will not be able to run the game yet since you have not implemented `gameOver` method!
 
 ## Adding the gameOver method
 
