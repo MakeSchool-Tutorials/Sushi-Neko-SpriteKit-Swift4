@@ -123,7 +123,7 @@ func addRandomPieces(total: Int) {
       let lastPiece = sushiTower.last as SushiPiece!
 >      
       /* Need to ensure we don't create impossible sushi structures */
-      if lastPiece.side != .none {
+      if lastPiece?.side != .none {
          addTowerPiece(side: .none)
       } else {
 >      
