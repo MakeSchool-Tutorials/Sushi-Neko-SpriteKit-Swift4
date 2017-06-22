@@ -51,7 +51,7 @@ Let's setup this master sushi piece.
 
 > [action]
 >
-> Drag in *roll.png* and place it in the center of the screen near the bottom. I would suggest around `(0,160)`,
+> Drag in *roll.png* and place it in the center of the screen near the bottom. I would suggest around `(160,160)`,
 > set the *Name* to `sushiBasePiece`.
 >
 > Drag in *chopstick.png* and move it to the top-left side of the *sushiBasePiece*.
