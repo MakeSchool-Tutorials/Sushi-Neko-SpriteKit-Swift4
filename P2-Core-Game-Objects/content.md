@@ -158,9 +158,6 @@ Let's setup a function to handle this.
 >
 ```
 func connectChopsticks() {
-  /* Connect our child chopstick nodes */
->
-  func connectChopsticks() {
     /* Connect our child chopstick nodes */
     rightChopstick = childNode(withName: "rightChopstick") as! SKSpriteNode
     leftChopstick = childNode(withName: "leftChopstick") as! SKSpriteNode
