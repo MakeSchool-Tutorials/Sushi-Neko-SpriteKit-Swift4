@@ -120,10 +120,10 @@ func addRandomPieces(total: Int) {
   for _ in 1...total {
 >  
       /* Need to access last piece properties */
-      let lastPiece = sushiTower.last as SushiPiece!
+      let lastPiece = sushiTower.last as! SushiPiece
 >      
       /* Need to ensure we don't create impossible sushi structures */
-      if lastPiece?.side != .none {
+      if lastPiece.side != .none {
          addTowerPiece(side: .none)
       } else {
 >      
