@@ -67,9 +67,7 @@ When should you change the GameState change from `.title` to `.ready`? Let's add
 
 > [info]
 > SpriteKit does not come with an easy way to make buttons so we created a basic button class called *MSButtonNode* for you.
-> Feel free to explore this class if you've not comes across it before, it's in the **Utils** folder in the *Project
-> Navigator*.  The *MSButtonNode* class is explored in greater detail in the *Hoppy Bunny Tutorial*
->
+> Feel free to explore this class if you've not comes across it before. The *MSButtonNode* class is explored in greater detail in the *Hoppy Bunny Tutorial*.
 
 Next you need to code connect the *playButton* to the **GameScene** class, see if you can do this yourself.
 
@@ -147,12 +145,10 @@ the player has been hit and Game over.
 >
 ```
 /* Grab sushi piece on top of the base sushi piece, it will always be 'first' */
-let firstPiece = sushiTower.first as SushiPiece!
-```
-> Add this
-```
+let firstPiece = sushiTower.first as! SushiPiece
+>
 /* Check character side against sushi piece side (this is our death collision check)*/
-if character.side == firstPiece?.side {
+if character.side == firstPiece.side {
 >        
     /* Drop all the sushi pieces down a place (visually) */
     for sushiPiece in sushiTower {
@@ -161,11 +157,10 @@ if character.side == firstPiece?.side {
 >        
     gameOver()
 >        
-    /* No need to continue as player dead */
+    /* No need to continue as player is dead */
     return
 }
 ```
->
 
 That was a cheap and easy collision check, you may have noticed the visual sushi tower drop code is being used in the
 same method twice.
