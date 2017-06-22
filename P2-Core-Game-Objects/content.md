@@ -237,7 +237,6 @@ override func didMove(to view: SKView) {
 }
 ```
 >
->
 > Next next add the following to `didMove(to view:)`. This creates a reference to the `sushioBasePiece` you created in
 > *GameScene.sks*.
 >
@@ -272,7 +271,7 @@ Awesome, let's add the heroic feline.
 Time for your feline friend to enter the fray.
 
 > [action]
-> Open *GameScene.sks*, drag in *character.png* and place it in on the left side of the sushi, set the *Z Position* to `1`.  
+> Open *GameScene.sks*, drag in *character1.png* and place it in on the left side of the sushi, set the *Z Position* to `1`.  
 > A *Position* of `(70,165)` looks pretty good.  Set *Name* to `character` and *Custom Class* to `Character`.
 
 You may have noticed you don't have a *Character* class yet, let's create one. It's similar to the *SushiPiece* in
