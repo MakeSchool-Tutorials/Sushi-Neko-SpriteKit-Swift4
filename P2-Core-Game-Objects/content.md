@@ -320,7 +320,7 @@ class Character: SKSpriteNode {
 >
 
 After the *SushiPiece* setup, this code should be fairly clear. There is no need to implement a handler for the
-`.none` enum case as the cat can only every be on the `.left` or the `.right`.
+`.none` enum case as the cat can only ever be on the `.left` or the `.right`.
 
 Next you need to code connect the cat, see if you can do this yourself. The process is the same as *sushiBasePiece*,
 just don't forget the name of this class :]
