@@ -132,7 +132,7 @@ Let's tackle removing and adding sushi before applying the visual polish.
 sushiTower.removeFirst()
 >
 /* Add a new sushi piece to the top of the sushi tower*/
-addRandomPieces(1)
+addRandomPieces(total: 1)
 ```
 >
 
