@@ -3,7 +3,7 @@ title: Turning a mechanic into a game
 slug: gameplay
 ---
 
-What is the difference between a game mechanic and a game? You've built the core game mechanic yet on its own this is 
+What is the difference between a game mechanic and a game? You've built the core game mechanic yet on its own this is
 not very satisfying for the player.  You need to wrap it up now into a game, the best advice is always, keep it simple!
 
 - What is the challenge for the player?
@@ -13,12 +13,12 @@ not very satisfying for the player.  You need to wrap it up now into a game, the
 
 ## The challenge
 
-How to challenge the player? You will be adding a health bar that will progressively decrease as time goes on. 
+How to challenge the player? You will be adding a health bar that will progressively decrease as time goes on.
 The player can refresh their health with every successful sushi piece knockout.
 
 ## The progression
 
-The classic indicator of progression is to introduce a scoring element.  You will add a score counter for every 
+The classic indicator of progression is to introduce a scoring element.  You will add a score counter for every
 sushi piece knocked out.
 
 ## The User Interface
@@ -194,27 +194,29 @@ func gameOver() {
     for sushiPiece in sushiTower {
         sushiPiece.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
     }
+>
+    /* Make the base turn red */
+    sushiBasePiece.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
 >    
-        /* Make the player turn red */
-        character.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
+    /* Make the player turn red */
+    character.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
 >    
-        /* Change play button selection handler */
-        playButton.selectedHandler = {
+    /* Change play button selection handler */
+    playButton.selectedHandler = {
 >            
-        /* Grab reference to the SpriteKit view */
-        let skView = self.view as SKView!
+    /* Grab reference to the SpriteKit view */
+    let skView = self.view as SKView!
 >            
-        /* Load Game scene */
-        guard let scene = GameScene(fileNamed:"GameScene") as GameScene! else {
-            return
-        }
->            
-        /* Ensure correct aspect mode */
-        scene.scaleMode = .aspectFill
->        
-        /* Restart GameScene */
-        skView?.presentScene(scene)
+    /* Load Game scene */
+    guard let scene = GameScene(fileNamed:"GameScene") as GameScene! else {
+        return
     }
+>            
+    /* Ensure correct aspect mode */
+    scene.scaleMode = .aspectFill
+>        
+    /* Restart GameScene */
+    skView?.presentScene(scene)
 }
 ```
 >
