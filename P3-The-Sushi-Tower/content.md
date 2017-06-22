@@ -123,8 +123,8 @@ func addRandomPieces(total: Int) {
       let lastPiece = sushiTower.last as SushiPiece!
 >      
       /* Need to ensure we don't create impossible sushi structures */
-      if lastPiece.side != Side.none {
-         addTowerPiece(Side.none)
+      if lastPiece.side != .none {
+         addTowerPiece(side: .none)
       } else {
 >      
          /* Random Number Generator */
@@ -132,13 +132,13 @@ func addRandomPieces(total: Int) {
 >          
          if rand < 45 {
             /* 45% Chance of a left piece */
-            addTowerPiece(.left)
+            addTowerPiece(side: .left)
          } else if rand < 90 {
             /* 45% Chance of a right piece */
-            addTowerPiece(.right)
+            addTowerPiece(side: .right)
          } else {
             /* 10% Chance of an empty piece */
-            addTowerPiece(.none)
+            addTowerPiece(side: .none)
          }
       }
   }
@@ -150,10 +150,10 @@ It's handy to be able to specify the number of pieces to add at one time, again 
 piece added as it will help you make a decision on what piece should go next. Remember that you seeded the stack with a few
 manual pieces so there will always be some sushi in the tower.
 
-The `arc4random_uniform(n)` returns a random number from `0` to `n - 1`. Our logic above looks at the value returned and 
-generates sushi piece with chopsticks on the left if the number is less than (`<`) 45, if the number is 45 or greater and 
-less than 90 it generates a piece with the chopsticks on the right, if the number is 90 or greater the piece has no 
-chopsticks. 
+The `arc4random_uniform(n)` returns a random number from `0` to `n - 1`. Our logic above looks at the value returned and
+generates sushi piece with chopsticks on the left if the number is less than (`<`) 45, if the number is 45 or greater and
+less than 90 it generates a piece with the chopsticks on the right, if the number is 90 or greater the piece has no
+chopsticks.
 
 ## Stocking the sushi tower
 
