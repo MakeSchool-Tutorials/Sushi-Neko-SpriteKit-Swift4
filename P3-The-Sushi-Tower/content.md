@@ -39,7 +39,7 @@ func addTowerPiece(side: Side) {
    newPiece.connectChopsticks()
 >   
    /* Access last piece properties */
-   let lastPiece = sushiTower.last!
+   let lastPiece = sushiTower.last
 >   
    /* Add on top of last piece, default on first piece */
    let lastPosition = lastPiece?.position ?? sushiBasePiece.position
