@@ -141,7 +141,27 @@ You will want to check the *side* of the first piece of sushi against the *side*
 the player has been hit and Game over.
 
 > [action]
-> Add the following code in `touchesBegan(_ touches:)`, at the beginning of your `if let firstPiece = sushiTower.first` statement:
+>
+### Animating the tower move
+>
+Replace the contents of `moveTowerDown()` with:
+>
+```
+for sushiPiece in sushiTower {
+    sushiPiece.run(SKAction.move(by: CGVector(dx: 0, dy: -55), duration: 0.10))
+}
+```
+>
+## Cleaning things up
+>
+Remove the call to `moveTowerDown()` from update.
+>
+Add a new call to `moveTowerDown()` to the end of `touchesBegan`.
+>
+>
+## Implementing Death
+> 
+Add the following code in `touchesBegan(_ touches:)`, at the beginning of your `if let firstPiece = sushiTower.first` statement:
 >
 ```
 /* Check character side against sushi piece side (this is our death collision check)*/
@@ -154,20 +174,6 @@ if character.side == firstPiece.side {
 >        
     /* No need to continue as player is dead */
     return
-}
-```
->
-Remove the call to `moveTowerDown()` from update.
->
-Add a new call to `moveTowerDown()` to the end of the `for touch in touches` loop in `touchesBegan`.
->
-### Animating the tower move
->
-Replace the contents of `moveTowerDown()` with:
->
-```
-for sushiPiece in sushiTower {
-    sushiPiece.run(SKAction.move(by: CGVector(dx: 0, dy: -55), duration: 0.10))
 }
 ```
 
