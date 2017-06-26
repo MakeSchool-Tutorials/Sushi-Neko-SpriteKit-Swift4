@@ -141,7 +141,7 @@ You will want to check the *side* of the first piece of sushi against the *side*
 the player has been hit and Game over.
 
 > [action]
-> Add the following code in `touchesBegan(_ touches:)`, at the beginning of your `if let firstPiece = sushiTower.first as! SushiPiece` statement:
+> Add the following code in `touchesBegan(_ touches:)`, at the beginning of your `if let firstPiece = sushiTower.first` statement:
 >
 ```
 /* Check character side against sushi piece side (this is our death collision check)*/

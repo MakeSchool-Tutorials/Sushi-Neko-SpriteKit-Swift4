@@ -146,7 +146,7 @@ are not removing the sushi visually from the scene.
 >
 ```
 /* Grab sushi piece on top of the base sushi piece, it will always be 'first' */
-if let firstPiece = sushiTower.first as! SushiPiece {
+if let firstPiece = sushiTower.first {
     /* Remove from sushi tower array */
     sushiTower.removeFirst()
     firstPiece.removeFromParent()

@@ -39,7 +39,7 @@ func addTowerPiece(side: Side) {
    newPiece.connectChopsticks()
 >   
    /* Access last piece properties */
-   let lastPiece = sushiTower.last
+   let lastPiece = sushiTower.last!
 >   
    /* Add on top of last piece, default on first piece */
    let lastPosition = lastPiece?.position ?? sushiBasePiece.position
@@ -120,7 +120,7 @@ func addRandomPieces(total: Int) {
   for _ in 1...total {
 >  
       /* Need to access last piece properties */
-      let lastPiece = sushiTower.last as! SushiPiece
+      let lastPiece = sushiTower.last!
 >      
       /* Need to ensure we don't create impossible sushi structures */
       if lastPiece.side != .none {
