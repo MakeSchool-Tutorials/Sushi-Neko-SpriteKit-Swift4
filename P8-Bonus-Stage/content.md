@@ -17,13 +17,6 @@ The main menu is a little boring, just a play button.  Although this is certainl
 > Improve the main menu intro, one idea might be the mat could roll down the screen and display a **Sushi Neko** title using an *SKLabel*.
 > **Hint**: Take a look at *mat.png*
 
-#Random stack space
-
-Sometimes you will notice a space in the stack. Can you find out why this happens?
-
-> [challenge]
-> Solve the spacing issue.
-
 #Game over
 
 When the game ends there is no real fan fare, why not use some of the skills employed in the last chapter?
