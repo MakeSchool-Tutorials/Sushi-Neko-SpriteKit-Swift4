@@ -3,8 +3,8 @@ title: Adding core game objects
 slug: core-game-objects
 ---
 
-For Sushi Neko you will be using the default portrait orientation. You will need to modify the *GameScene.sks* scene
-size to a iPhone resolution. The artwork was designed for iPhone 6 or 7, and should work for most other screen sizes.
+For Sushi Neko you will be using the default portrait orientation. You will need to set the *GameScene.sks* scene
+size to an iPhone resolution. The artwork was designed for iPhone 6 or 7, and should work for most other screen sizes.
 
 ## Set the Game to Portrait
 
@@ -18,7 +18,12 @@ This game will run in protrait mode only.
 ## Setting up GameScene.sks
 
 > [action]
-> Open *GameScene.sks*, delete any default objects. `Zoom Out` until you can see the white bounding box of the scene.
+> Open *GameScene.sks*, delete the default `helloLabel` object from the heirarchy. You can do this by right clicking on it
+> and selecting delete.
+> ![GameScene Tree](../Tutorial-Images/xcode_gamescene_tree.png)
+> Zoom out until you can see the white bounding box of the scene. Use the controls on the bottom right of the scene editor
+> to zoom in and out. They should look like a `+`, `-`, and `=` symbol.
+> ![Gamescene Editor](../Tutorial-Images/xcode_gamescene_sceneeditor.png)
 > Click on
 > *Atrributes inspector* and set the *Size* to `(320,568)`
 >
@@ -32,13 +37,15 @@ This game will run in protrait mode only.
 It's nice to work with a backdrop, so let's add this before working on the core objects.
 
 > [action]
-> Drag *background.png* onto the scene and snap to the center. Set the *Z Position* to `-1`.
+> Drag *background.png* onto the scene and snap to the center. If it does not snap to the center, you can drag the edges of
+> the image until they snap to the edges of the scene.
+> Set the *Z Position* to `-1` and set the *Name* to `background`.
 >
 
 # Creating Sushi
 
 Sushi is a key ingredient in the game mechanic, you will use it to build a sushi tower. To create the tower you will
-be randomly stacking sushi, before you can stack the tower you need to build a core piece of sushi.  This master piece
+be randomly stacking sushi, before you can stack the tower you need to build a core piece of sushi.  The core piece
 will contain two chopsticks, one on the left and one on the right.  
 
 This will enable 3 possible sushi pieces:
@@ -47,12 +54,12 @@ This will enable 3 possible sushi pieces:
 - Sushi with left hand side chopstick
 - Sushi with right hand side chopstick
 
-Let's setup this master sushi piece.
+Let's setup this core sushi piece.
 
 > [action]
 >
-> Drag in *roll.png* and place it in the center of the screen near the bottom. I would suggest around `(160,160)`,
-> set the *Name* to `sushiBasePiece`.
+> Drag in *roll.png* from `assets.atlas` and place it in the center of the screen near the bottom.
+> I would suggest around `(160,160)`, set the *Name* to `sushiBasePiece`.
 >
 > Drag in *chopstick.png* and move it to the top-left side of the *sushiBasePiece*.
 > You want this *chopstick* to be part of our **Sushi Piece**, set *Parent* to `sushiBasePiece` and I would suggest a
@@ -90,7 +97,7 @@ class GameScene: SKScene {
 ## Sushi type
 
 You will want to keep track of the type of sushi piece.
-An *Enumeration* would work well for the first job, knowing what *Side* the chopstick is on will come in handy later
+An *Enumeration* would work well for tracking the side, knowing what *Side* the chopstick is on will come in handy later
 when you need to test for cat vs chopstick collisions.
 
 > [action]
@@ -151,7 +158,8 @@ Looking good, time for you to connect the chopsticks.
 
 ## Connecting chopsticks
 
-Let's setup a function to handle this.
+Let's setup an easy way to connect to our chopsticks. Creating a method will make it easier to trigger the setup
+that is required for each sushi piece to connect to it's child nodes, the chopsticks.
 
 > [action]
 > Add the following method to your *SushiPiece* class.
@@ -165,10 +173,10 @@ func connectChopsticks() {
 ```
 >
 
-Great, this would be a good time to add a property to track the type of sushi piece.
+Great, now that you have connected to the chopsticks you should add a property to track the type of sushi piece.
 
 > [action]
-> Add the following to the start of the *SushiPiece* class:
+> Add the following to the start of the *SushiPiece* class beneath the chopstick declarations:
 >
 ```
 /* Sushi type */
@@ -193,8 +201,11 @@ var side: Side = .none {
 
 ## Property observation
 
-You now have a *Side* property to keep track of the sushi type, using your previously defined Enumeration type. You can
-make use of the *didSet* property observer to ensure the chopsticks are correctly setup as shown.
+You now have a *Side* property to keep track of the sushi type, using the previously defined Enumeration type.
+The *Side* property uses the *didSet* property observer to make some changes when the value of *side* changes.
+You use a *switch statement* to handle the different values possible for *side* and then set the *isHidden* property.
+*isHidden* is a property that all *SKSpriteNode*s have. As you would expect, it tells the scene whether or not to show the node.
+You can make use of the *didSet* property observer to ensure the chopsticks are correctly setup as shown.
 
 > [action]
 > Add the following to the end of the *connectChopsticks* method:
@@ -237,7 +248,7 @@ override func didMove(to view: SKView) {
 }
 ```
 >
-> Next next add the following to `didMove(to view:)`. This creates a reference to the `sushioBasePiece` you created in
+> Next next add the following to `didMove(to view:)`. This creates a reference to the `sushiBasePiece` you created in
 > *GameScene.sks*.
 >
 ```
@@ -251,7 +262,7 @@ You need to ensure the *connectChopsticks* method is called. A good place to add
 **sushiBasePiece** code connection.
 
 > [action]
-> Open *GameScene.swift* and add a call to this method anywhere after the **sushiBasePiece** code connection
+> Open *GameScene.swift* and add a call to this method after the **sushiBasePiece** code connection
 > in `didMove(to view:)`
 >
 ```
@@ -318,11 +329,11 @@ class Character: SKSpriteNode {
 After the *SushiPiece* setup, this code should be fairly clear. There is no need to implement a handler for the
 `.none` enum case as the cat can only ever be on the `.left` or the `.right`.
 
-Next you need to code connect the cat, see if you can do this yourself. The process is the same as *sushiBasePiece*,
+Next, you need to connect the cat in the code, see if you can do this yourself. The process is the same as *sushiBasePiece*,
 just don't forget the name of this class :]
 
 > [solution]
-> Open *GameScene.swift* and add the following property to the class.
+> Open *GameScene.swift* and add the following property to the class below `sushiBasePiece`.
 >
 ```
 /* Cat Character */
@@ -334,6 +345,7 @@ var character: Character!
 >
 ```
 /* Connect game objects */
+sushiBasePiece = childNode(withName: "sushiBasePiece") as! SushiPiece
 character = childNode(withName: "character") as! Character
 ```
 >
@@ -344,7 +356,7 @@ Run the game, always good to frequently check everything is working after adding
 
 # Summary
 
-Great, you've learnt to:
+Great, you have learned how to:
 
 - Setup the two core objects of this game
 - Create custom subclasses of *SKSpriteNode*
