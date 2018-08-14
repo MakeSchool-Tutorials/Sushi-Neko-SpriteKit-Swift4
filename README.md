@@ -1,7 +1,7 @@
-# Sushi Neko SpriteKit Swift 3
+# Sushi Neko SpriteKit Swift 4
 
-Use SpriteKit and Swift 3 to build a game like [Timberman](http://www.digitalmelody.eu/games/Timberman). This version of the
-tutorial has been updated for Swift 3 _using Xcode beta 6_.
+Use SpriteKit and Swift 4 to build a game like [Timberman](http://www.digitalmelody.eu/games/Timberman). This version of the
+tutorial has been updated for Swift 4 using Xcode 9.
 
 <!-- screenshots and gifs from licecap (http://www.cockos.com/licecap/), include them in a screenshots folder and reference with relative links -->
 
@@ -23,7 +23,7 @@ Creating games using the scene editor allows for a fast visual system for settin
 of string identifiers for elements created in the editor. This can lead to spelling errors that cause your code not 
 to find elements in the scene. 
 
-The same is true for setting the class customo classes for elements created in the scene editor. Custom classes also bring
+The same is true for setting the custom classes for elements created in the scene editor. Custom classes also bring
 a problem where they are not recognized when the name of your project uses spaces or special characters. These types of 
 errors might look like: 
 
@@ -40,7 +40,7 @@ Here the project was named "Game-O-Life". Changing the name of the project to "G
 
 ## What you should understand when finished
 
-By the time you complete this tutorial you should be able to make an app game using SpriteKit. This learning how to create
+By the time you complete this tutorial you should be able to make an app game using SpriteKit. Learning how to create
 Sprite nodes, place them on the screen, and apply actions provides limitless possibilities. 
 
 <!-- list of check for understanding questions the student should be able to answer when finished -->
