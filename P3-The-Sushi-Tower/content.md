@@ -83,7 +83,7 @@ The *newPiece* is then added to the scene and also added to the *sushiTower* arr
 
 ## Seeding the tower
 
-Before you move on top random generation, it would be a good idea to test this works and stack the tower with a couple of
+Before you move on to random generation, it would be a good idea to test this works and stack the tower with a couple of
 starting pieces. This way you can always guarantee the cat starts in a safe position.
 
 > [action]
@@ -176,7 +176,7 @@ Run the game, it should look something like this, just slightly different :]
 
 You're making real progress, the sushi tower is the heart of this game mechanic.  
 
-You've learnt to
+You have learned how to
 
 - Dynamically generate sushi pieces and manage them in an array.  
 
