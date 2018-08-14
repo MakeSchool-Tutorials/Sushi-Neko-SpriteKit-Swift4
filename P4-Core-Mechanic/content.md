@@ -3,7 +3,7 @@ title: Building the core mechanic
 slug: core-mechanic
 ---
 
-Time to work on the games core mechanic, it's a lesser known fact that cat's will punch sushi as all they want is some
+Time to work on the games core mechanic. It's a lesser known fact that cat's will punch sushi as all they want is some
 sashimi.  Cats can also navigate space and time to teleport instantly from one side of the screen to the other and knock
 those sushi clean out of the sushi tower.
 
@@ -13,27 +13,24 @@ screen, the cat will be moved to the left/right side and then punch the first pi
 ## Touch control
 
 > [action]
-> Add the method: `touchesBegan(_ touches:)`. Inside the `GameScene` class start typing "touchesB" and Xcode will
-> provide code hints, use this to help avoid mistakes.
->
+> Add the method: `touchesBegan(_ touches:)`. Inside the `GameScene` class start typing "touchesB" and Xcode will 
+> provide code hints, use this to help avoid mistakes. 
+> 
 ```
 override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
->
+    
 }
 ```
 >
-> Inside this method add the following:
+> Inside this method add the following: 
 >
 ```
 override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     /* Called when a touch begins */
->    
     /* We only need a single touch here */
-    let touch = touches.first!
->    
+    let touch = touches.first! 
     /* Get touch position in scene */
-    let location = touch.location(in: self)
->    
+    let location = touch.location(in: self)   
     /* Was touch on left/right hand side of screen? */
     if location.x > size.width / 2 {
         character.side = .right
@@ -45,7 +42,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 >
 
 You are performing a simple check to decide which side of the screen was touched. Remember the property observer *didSet*,
-that you setup in *Character.swift* (Take a quick look)? When you set the *side* property the cat will move and set its position
+that you setup in *Character.swift* (Take a quick look)? When you set the *side* property the cat will move set its position
 appropriately.
 
 Run the game... You should have a working cat teleporter.
@@ -74,7 +71,7 @@ You are going to create three animation actions to enable your cat to perform th
 This will open up the empty *AnimationActions.sks*, and you should have an empty **Punch** action in the timeline.
 
 > [action]
-> Expand then **Punch** action timeline, click on the *Object library* and drag across an *AnimateWithTextures Action*.
+> Expand the **Punch** action timeline, click on the *Object library* and drag across an *AnimateWithTextures Action*.
 > ![Add AnimateWithTextures action](../Tutorial-Images/xcode_spritekit_add_animatewithtextures_action.png)
 >
 > To build the animation you need to drag in the *character2.png* and *character3.png* from the *Media Library* into the
@@ -100,14 +97,18 @@ Let's enhance the punch with a swipe sound effect.  You can tie this into the pu
 You will run this custom **Punch** action whenever the *side* is set for the cat.
 
 > [action]
-> Open *Character.swift*, add the following inside the *didSet* observer after the `if/else` statement block.
+> Open *Character.swift*, at the top of the class add the following.
 >
 ```
-/* Load/Run the punch action */
-let punch = SKAction(named: "Punch")!
+let punch = SKAction(named: "punch")!
+```
+
+This will ensure we only load the action once and store it on the character class. Once you have done that, add the following snippet inside the *didSet* observer after the `if/else` statement block.
+```
+/* Run the punch action */
 run(punch)
 ```
->
+The above code runs our punch action when the cat changes sides.
 
 Run the game. Your cat should be able to punch now!
 
@@ -130,46 +131,43 @@ Let's tackle removing and adding sushi before applying the visual polish.
 ```
 /* Remove from sushi tower array */
 sushiTower.removeFirst()
->
 /* Add a new sushi piece to the top of the sushi tower*/
 addRandomPieces(total: 1)
 ```
 >
 
-Run the game.... Well nothing much happens, this is because you are managing the sushi tower array correctly but, you
+Run the game.... Well nothing much happens, this is because you are managing the sushi tower array correctly.  However, you
 are not removing the sushi visually from the scene.  
 
 ## Improving the cycle
 
 > [action]
-> Replace this code block with:
+> Replace the code we just wrote with:
 >
 ```
 /* Grab sushi piece on top of the base sushi piece, it will always be 'first' */
-if let firstPiece = sushiTower.first {
+if let firstPiece = sushiTower.first as SushiPiece? {
     /* Remove from sushi tower array */
     sushiTower.removeFirst()
-    firstPiece.removeFromParent()
->
+    firstPiece.removeFromParent() 
     /* Add a new sushi piece to the top of the sushi tower */
     addRandomPieces(total: 1)
 }
 ```
 >
 
-Run the game... You can see the sushi being removed from the sushi tower.  Great, yet not quite what you want, would be
+Run the game... You can see the sushi being removed from the sushi tower.  Great, yet not quite what you want. It would be
 better if the remaining sushi would drop down a position. Let's add this.
 
 ## Moving the tower
 
-To move the tower down you'll loop through the array of sushi pieces and move each piece to a y position of it's position
-in the array times `55` which is the height of the piece. Instead of moving directly to this position you'll figure the
-distance to move and move 50% of the distance. if we do this each frame, if the distance was 100 pixels, the piece would
+To move the tower down you'll loop through the array of shushi pieces and move each piece to a y position of it's position
+in the array times `55` which is the height of the piece. Instead of moving directly to this position you'll figure the 
+distance to move and move 50% of the distance. If we do this each frame, and our distance was 100 pixels, the piece would 
 move 50 on the first update, 25 on the next, then 12.5, 6.25, 3.125, etc.  
 
 > [action]
 > Add a new method to `GameScene` to handle moving the tower down.
->
 ```
 func moveTowerDown() {
     var n: CGFloat = 0
@@ -182,13 +180,13 @@ func moveTowerDown() {
 ```
 >
 
-You'll use the scene's `update(_ currentTime:)` method to move the pieces down. This method is called 60 times per second.
+You'll use the scene's `update(_ currentTime:)` method to move the pieces down. This method is called 60 times per second. 
 It's used for animating and updating game objects (`SKSpriteNodes` mostly) on the screen. If we call `moveTowerDown()`
-with `update(_ currentTime:)` the sushi tower will always move down as pieces are removed.
+within `update(_ currentTime:)` the sushi tower will always move down as pieces are removed. 
 
-> [action]
+> [action] 
 > Add `update(_ currentTime:)` inside `GameScene` start typing "update" wait for Xcode to show the method you want
-> in the code hints. Then choose it and add `moveTowerDown()`.
+> in the code hints. Then choose it and add `moveTowerDown()`. 
 >
 ```
 override func update(_ currentTime: TimeInterval) {
@@ -199,7 +197,7 @@ override func update(_ currentTime: TimeInterval) {
 
 Run the game... Should look a lot better now. Still needs work but the pieces are moving down!
 
-It would be good if sushi pieces flew off the screen to the right or left as the cat punched them.
+It would be good if sushi pieces flew off the screen to the right or left as the cat punched them. 
 
 # Animating the sushi
 
@@ -234,21 +232,16 @@ facilitate this.
 ```
 func flip(_ side: Side) {
    /* Flip the sushi out of the screen */
->   
-   var actionName: String = ""
->   
+   var actionName: String = "" 
    if side == .left {
       actionName = "FlipRight"
    } else if side == .right {
       actionName = "FlipLeft"
-   }
->   
+   }  
    /* Load appropriate action */
-   let flip = SKAction(named: actionName)!
->   
+   let flip = SKAction(named: actionName)!  
    /* Create a node removal action */
-   let remove = SKAction.removeFromParent()
->   
+   let remove = SKAction.removeFromParent()  
    /* Build sequence, flip then remove from scene */
    let sequence = SKAction.sequence([flip,remove])
    run(sequence)
@@ -259,7 +252,7 @@ func flip(_ side: Side) {
 Read through the comments, most of this should already be familiar to you.  You may not have seen the last section of code
 in which you build a *SKAction.sequence*, which is simply joining actions together.  In this case when the **Flip**
 animation is complete you want the sushi to be removed from the game.  Currently in the code you are calling
-*removeFromParent()* to instantly remove the sushi, so the player will never see the anination.
+*removeFromParent()* to instantly remove the sushi, so the player will never see the animation.
 
 > [action]
 > Open *GameScene.swift* and replace the following inside `touchesBegan(_ touches:)`
@@ -282,7 +275,7 @@ Now run the game.... Flying sushi!
 
 # Summary
 
-Great job, you've achieved a lot in this chapter, the game's core mechanic is now in place.  You've learnt to:
+Great job, you've achieved a lot in this chapter, the game's core mechanic is now in place.  You have learned how to:
 
 - Add touch controls
 - Build animations visually
