@@ -18,11 +18,11 @@ Let's take a look at what you have learned.
 
 ##The Sushi Tower
 
-- **Dynamic Tower**: Learn to utilize a RNG and apply rules to dynamically generate sushi object to fill the sushi tower block.
+- **Dynamic Tower**: Learn to utilize a RNG and apply rules to dynamically generate sushi objects to fill the sushi tower block.
 
 ##Core Mechanic
 
-- **Game state management**: Managing the game state through the game lifecycle from first play to death and back again.
+- **Game state management**: Managing the game state through the game lifecycle from first play, to death, and back again.
 - **User Interface**: Adding a basic user interface for the player.
 - **Collision detection**: Learning how to build alternative code based collision detection, no need for physics collision detection here.
 - **Array management**: Managing an array, adding new pieces to the top of the array and removing the first piece in the array.
