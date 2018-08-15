@@ -11,9 +11,10 @@ The health bar comprises of two assets, the *life_bg.png* background and the *li
 
 > [action]
 > Open *GameScene.sks* and drag *life_bg.png* to the center of the scene and near the top.
-> Set the *Z Position* to `100`, you want this to be high due to the sushi pieces.
+> `(160, 540)` seems like a good position. Now set the *Name* to `healthBarBackground` and
+> set the *Z Position* to `1000`. You want this to be high due to the sushi pieces.
 >
-> Drag *life.png* into the center of the the bar, set the *Z-Position* to `101` and *Name* to `healthBar`
+> Drag *life.png* into the center of the the bar, set the *Z-Position* to `1001` and *Name* to `healthBar`
 >
 
 How do you think you could gracefully decrease the health bar?
@@ -80,9 +81,8 @@ A great place to add a steady decline would be in the `update(_ currentTime:)` m
 >
 ```
 /* Called before each frame is rendered */
-if state != .playing {
-    return
-}
+if state != .playing { return }
+>
 /* Decrease Health */
 health -= 0.01
 /* Has the player ran out of health? */
@@ -136,11 +136,12 @@ player's score in the scene and also a counter property to track the score and u
 
 > [action]
 > Open *GameScene.sks* and drag across a *Label* from the *Object Library*.
-> can of course set the *Position* to something like `(160,340)`.
+> You can set the *Position* to something like `(160,340)`.
 >
 > Set the *Name* to `scoreLabel` and change the *Font* to something you like.
 > ![Score font selection](../Tutorial-Images/xcode_screenshot_font_selection.png)
-> Set the *Text* to `0` and set the *Z-Position* to `100`
+> Set the *Text* to `0` and set the *Z-Position* to `1000` to match the health bar. You want this number to be high as
+> well so that it is displayed above the sushi pieces.
 >
 > Set the font and the size of the label to something bold that will be easy to read. 
 >
@@ -198,7 +199,7 @@ Run the game...  Congratulations, you should now have a fully functional game!
 
 Congratulations you've completed *Sushi Neko*, give the person next to you a high five.
 
-You learnt to:
+You have learned how to:
 - Add health and score mechanics
 - Implement game counters and utilize property observation to update the display objects.
 
