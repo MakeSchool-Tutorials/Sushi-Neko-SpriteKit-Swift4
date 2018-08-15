@@ -3,7 +3,7 @@ title: Welcome to bonus stage
 slug: bonus-stage
 ---
 
-Welcome to bonus stage, your challenge should you accept, is to work through the list of challenges and take your game to the next level.
+Welcome to bonus stage! Your task, should you accept, is to work through the list of challenges and take your game to the next level.
 
 There are no solutions provided and I would encourage you to discuss potential solutions with your fellow students, it's good to collaborate and often results in new exciting directions.
 
@@ -33,7 +33,7 @@ How about adding a little variety to the sushi?
 
 #Game Center
 
-This challenge is a bit more advanced.  However, as a developer you need to challenge yourself to progress.  You should be familiar with googling to help solve problems, it will come in handy I'm sure :]
+This challenge is a bit more advanced.  However, as a developer you need to challenge yourself to progress.  You should be familiar with using Google to help solve problems, it will come in handy I'm sure :]
 
 Here is a good starting place.  [Game Center](https://developer.apple.com/game-center/)
 
