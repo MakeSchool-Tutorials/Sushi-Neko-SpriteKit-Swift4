@@ -200,6 +200,7 @@ Run the game...  Congratulations, you should now have a fully functional game!
 Congratulations you've completed *Sushi Neko*, give the person next to you a high five.
 
 You have learned how to:
+
 - Add health and score mechanics
 - Implement game counters and utilize property observation to update the display objects.
 
