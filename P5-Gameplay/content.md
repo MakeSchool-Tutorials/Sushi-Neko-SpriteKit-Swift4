@@ -27,7 +27,7 @@ Let's keep it simple to start with and add a Play button that will also serve as
 
 # GameState management
 
-As it stands we have no idea what state the game is in, before we introduce additional elements we need to know what
+As it stands we have no idea what state the game is in. Before we introduce additional elements, we need to know what
 state the game is in.  Are we waiting for the player to press play? Is the game in progress? Did the player just die?
 
 Previously you used an *Enumeration* type to define the possible *side* states for the cat and sushi.
@@ -43,7 +43,7 @@ enum GameState {
 ```
 >
 
-You will need to implement a tracking property to the GameScene class, let's default it to `.title` as you would expect
+You will need to add a tracking property to the GameScene class, let's default it to `.title` as you would expect
 this to be first state the player experiences after opening the game.
 
 > [action]
@@ -61,6 +61,7 @@ When should you change the GameState change from `.title` to `.ready`? Let's add
 
 > [action]
 > Open *GameScene.sks* and drag *button.png* to the bottom-middle of the scene, just below the sushi base.
+> `(160, 55)` looks to be a good spot for the position.
 > Set *Name* to `playButton`, change *Custom Class* to `MSButtonNode`.
 
 <!-- -->
@@ -113,16 +114,14 @@ to enable/disable various elements of the game.  You don't want the cat to be ab
 /* Game not ready to play */
 if state == .gameOver || state == .title { return }
 /* Game begins on first touch */
-if state == .ready {
-   state = .playing
-}
+if state == .ready { state = .playing }
 ```
 >
 
 You want to disable touch when the player is not `.playing`, the first line covers this by simply returning from the
 method when the player is on the title screen or dead.
 
-The next line adds a little nuance, when the player press the button the game changes to a `.ready` state.  However,
+The next line adds a little nuance, when the player taps the play button the game changes to a `.ready` state.  However,
 we don't want the game to begin until that first screen touch by the player.
 
 Run the game... Hopefully you can't control the cat until you've hit the play button first :]
@@ -177,34 +176,36 @@ func gameOver() {
     /* Game over! */
 >    
     state = .gameOver
+>
+    /* Create turnRed SKAction */
+    let turnRed = SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.50)
 >    
     /* Turn all the sushi pieces red*/
+    sushiBasePiece.run(turnRed)
     for sushiPiece in sushiTower {
-        sushiPiece.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
+        sushiPiece.run(turnRed)
     }
->
-    /* Make the base turn red */
-    sushiBasePiece.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
 >    
     /* Make the player turn red */
-    character.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0.50))
+    character.run(turnRed)
 >    
     /* Change play button selection handler */
     playButton.selectedHandler = {
 >            
-    /* Grab reference to the SpriteKit view */
-    let skView = self.view as SKView!
+        /* Grab reference to the SpriteKit view */
+        let skView = self.view as SKView?
 >            
-    /* Load Game scene */
-    guard let scene = GameScene(fileNamed:"GameScene") as GameScene! else {
-        return
-    }
+        /* Load Game scene */
+        guard let scene = GameScene(fileNamed: "GameScene") as GameScene? else {
+            return
+        }
 >            
-    /* Ensure correct aspect mode */
-    scene.scaleMode = .aspectFill
+        /* Ensure correct aspect mode */
+        scene.scaleMode = .aspectFill
 >        
-    /* Restart GameScene */
-    skView?.presentScene(scene)
+        /* Restart GameScene */
+        skView?.presentScene(scene)
+    }
 }
 ```
 >
@@ -223,7 +224,7 @@ Run the game... It should look like this.
 
 Great progress, you now have a functional game!
 
-You've learnt to:
+You have learned how to:
 
 - Manage your game through use of gamestates
 - Add basic UI
