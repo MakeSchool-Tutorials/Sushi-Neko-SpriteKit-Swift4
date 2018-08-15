@@ -13,7 +13,7 @@ slug: new-spritekit-project
 ## Importing Resources
 
 > [action]
-> Download the [Sushi Neko Art Pack](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift3/raw/master/assets.atlas.zip)
+> Download the [Sushi Neko Art Pack](https://github.com/MakeSchool-Tutorials/Sushi-Neko-SpriteKit-Swift4/raw/master/assets.atlas.zip)
 > we created for you.
 > Once the download is complete, unpack the folder and add it to your project.
 > Ensure you have *Copy items if needed* and *Create groups*.
