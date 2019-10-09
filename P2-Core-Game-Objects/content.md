@@ -21,11 +21,19 @@ This game will run in protrait mode only.
 > Open *GameScene.sks*, delete the default `helloLabel` object from the heirarchy. You can do this by right clicking on it
 > and selecting delete.
 > ![GameScene Tree](../Tutorial-Images/xcode_gamescene_tree.png)
+>
 > Zoom out until you can see the white bounding box of the scene. Use the controls on the bottom right of the scene editor
+>
 > to zoom in and out. They should look like a `+`, `-`, and `=` symbol.
+>
 > ![Gamescene Editor](../Tutorial-Images/xcode_gamescene_sceneeditor.png)
+>
 > Click on
 > *Atrributes inspector* and set the *Size* to `(320,568)`
+>
+> The attributes inspector can be shown and hidden by clicking the last option in this section
+>
+> ![Attributes inspector](../Tutorial-Images/xcode_inspector.png)
 >
 > Also, move the anchor point to the lower left by setting *Anchor* to `(0, 0)`.
 >
@@ -37,8 +45,8 @@ This game will run in protrait mode only.
 It's nice to work with a backdrop, so let's add this before working on the core objects.
 
 > [action]
-> Drag *background.png* onto the scene and snap to the center. If it does not snap to the center, you can drag the edges of
-> the image until they snap to the edges of the scene.
+> Drag *background.png* (located inside the assets folder) onto the scene and snap to the center. If it does not snap to the center, you can resize the image
+> image until it fills the whole scene.
 > Set the *Z Position* to `-1` and set the *Name* to `background`.
 >
 
@@ -62,22 +70,24 @@ Let's setup this core sushi piece.
 > I would suggest around `(160,160)`, set the *Name* to `sushiBasePiece`.
 >
 > Drag in *chopstick.png* and move it to the top-left side of the *sushiBasePiece*.
-> You want this *chopstick* to be part of our **Sushi Piece**, set *Parent* to `sushiBasePiece` and I would suggest a
-> position of around `(-92,37)`.  Set the *Name* to `leftChopstick`.
+> You want this *chopstick* to be part of our **Sushi Piece**, set *Parent* to `sushiBasePiece`.  Set the *Name* to `leftChopstick`.
 >
 > ![Left chopstick setup](../Tutorial-Images/xcode_spritekit_leftchopstick.png)
 >
 
-Now we need to add the right hand side chopstick. Can you do this?
+Now we need to add the right hand side chopstick.
 
-> [solution]
+> [action]
+>
 > *Copy / Paste* the left chopstick, set the *Name* to `rightChopstick`.  
 > There is a simple trick to flip the asset horizontally, set *Scale X* to `-1`.
 >
 > ![Flip horizontally](../Tutorial-Images/xcode_spritekit_flip_horizontal.png)
 >
 
-## Working with GameScene
+Later you will program how the chopsticks appear to make the game work.
+
+## Coding the game functionality
 
 The default project comes with a lot of extra code you don't need for this project. You will want to remove it
 before continuing.
@@ -101,7 +111,7 @@ An *Enumeration* would work well for tracking the side, knowing what *Side* the 
 when you need to test for cat vs chopstick collisions.
 
 > [action]
-> Add the following code to the top of *GameScene.swift* before the class definition.
+> Add the following code to the top of *GameScene.swift* before the class definition. That is right after the two imports.
 >
 ```
 /* Tracking enum for use with character and sushi side */
@@ -116,7 +126,7 @@ Next up you will create a custom sushi class called *SushiPiece*
 
 > [action]
 > Create a new *Swift* file (`File > New > File > Swift File`) and name it `SushiPiece.swift`.
-> Replace the contents of this file with:
+> Replace ALL the contents of this file with the following:
 >
 ```
 import SpriteKit
@@ -150,7 +160,7 @@ Before you do this, you need to set the **sushiBasePiece** class to *SushiPiece*
 >
 > ![Sushi custom class](../Tutorial-Images/xcode_spritekit_sushi_custom_class.png)
 
-Run the game, you should expect to see the scene as it is in the editor.
+Run the game `CMD+R`, you should expect to see the scene as it is in the editor.
 
 ![Screenshot Sushi](../Tutorial-Images/screenshot_sushi_basic.png)
 
@@ -162,8 +172,9 @@ Let's setup an easy way to connect to our chopsticks. Creating a method will mak
 that is required for each sushi piece to connect to it's child nodes, the chopsticks.
 
 > [action]
-> Add the following method to your *SushiPiece* class.
+> Add the following method to your *SushiPiece* class. This goes below where the `required init` method ends and before the last curly bracket.
 >
+
 ```
 func connectChopsticks() {
     /* Connect our child chopstick nodes */
@@ -176,7 +187,7 @@ func connectChopsticks() {
 Great, now that you have connected to the chopsticks you should add a property to track the type of sushi piece.
 
 > [action]
-> Add the following to the start of the *SushiPiece* class beneath the chopstick declarations:
+> Add the following to the start of the *SushiPiece* class beneath the chopstick variable declarations:
 >
 ```
 /* Sushi type */
@@ -223,7 +234,7 @@ The default *side* will be set to `.none`, you're not quite ready to run the gam
 Time to connect the **sushiBasePiece**.
 
 > [action]
-> Open *GameScene.swift* and add the following property to the class.
+> Open *GameScene.swift* and add the following property before the class declaration.
 >
 ```
 /* Game objects */
@@ -238,7 +249,7 @@ your game.
 
 > [action]
 >
-> Next add `didMove(to view:)`. Tip! If you start typing "didMove" Xcode will show a menu with code options.
+> Next add `didMove(to view:)` this time inside the class *GameScene*. Tip! If you start typing "didMove" Xcode will show a menu with code options.
 > When you see "didMove(to view: SKView)" press the Return key and Xcode will type the rest of the function
 > for you.
 >
@@ -248,7 +259,7 @@ override func didMove(to view: SKView) {
 }
 ```
 >
-> Next next add the following to `didMove(to view:)`. This creates a reference to the `sushiBasePiece` you created in
+> Next add the following inside `didMove(to view:)`. This creates a reference to the `sushiBasePiece` you created in
 > *GameScene.sks*.
 >
 ```
@@ -358,9 +369,9 @@ Run the game, always good to frequently check everything is working after adding
 
 Great, you have learned how to:
 
-- Setup the two core objects of this game
-- Create custom subclasses of *SKSpriteNode*
+- Setup the sushi and cat, the two main objects of this game
+- Create custom subclasses of *SKSpriteNode*, SushiPiece and Character
 - Add a custom *Enumeration* type for use in tracking your game objects
-- Implement property observation with *didSet*
+- Implement property observation with *didSet* to check for value changes
 
 Next you will get started building the Sushi Tower!

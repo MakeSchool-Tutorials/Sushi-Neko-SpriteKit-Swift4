@@ -15,7 +15,7 @@ the endless cycle of the sushi tower.
 The tower is simply an array of *SushiPiece* objects.
 
 > [action]
-> Open *GameScene.swift* and add the following property to the class:
+> Open *GameScene.swift* and add the following property to the class, below your two game objects:
 >
 ```
 /* Sushi tower array */
@@ -28,7 +28,7 @@ var sushiTower: [SushiPiece] = []
 You are going to be adding lots of sushi, so it would be nice to add a method to perform this repetitive task.
 
 > [action]
-> Add the following method to the *GameScene* class.
+> Add the following method to the *GameScene* class, below the `didMove` function.
 >
 ```
 func addTowerPiece(side: Side) {

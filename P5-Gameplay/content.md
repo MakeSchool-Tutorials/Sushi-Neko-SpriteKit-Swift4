@@ -68,7 +68,7 @@ When should you change the GameState change from `.title` to `.ready`? Let's add
 
 > [info]
 > SpriteKit does not come with an easy way to make buttons so we created a basic button class called *MSButtonNode* for you.
-> Feel free to explore this class if you've not comes across it before. The *MSButtonNode* class is explored in greater detail in the *Hoppy Bunny Tutorial*.
+> Feel free to explore this class if you've not comes across it before.
 
 Next you need to code connect the *playButton* to the **GameScene** class, see if you can do this yourself.
 
@@ -140,7 +140,7 @@ You will want to check the *side* of the first piece of sushi against the *side*
 the player has been hit and Game over.
 
 > [action]
-> 
+>
 Add the following code in `touchesBegan(_ touches:)`, at the beginning of your `if let firstPiece = sushiTower.first` statement:
 >
 ```
